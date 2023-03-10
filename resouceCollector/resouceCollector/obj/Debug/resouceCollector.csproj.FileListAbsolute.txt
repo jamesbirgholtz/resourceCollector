@@ -9,3 +9,14 @@ C:\Users\birgh\Desktop\P\gameProject\resouceCollector\resouceCollector\obj\Debug
 C:\Users\birgh\Desktop\P\gameProject\resouceCollector\resouceCollector\obj\Debug\resouceCollector.csproj.CoreCompileInputs.cache
 C:\Users\birgh\Desktop\P\gameProject\resouceCollector\resouceCollector\obj\Debug\resouceCollector.exe
 C:\Users\birgh\Desktop\P\gameProject\resouceCollector\resouceCollector\obj\Debug\resouceCollector.pdb
+C:\Users\birgh\Desktop\P\gameProject\resourceCollecter\resouceCollector\resouceCollector\bin\Debug\resouceCollector.exe.config
+C:\Users\birgh\Desktop\P\gameProject\resourceCollecter\resouceCollector\resouceCollector\bin\Debug\resouceCollector.exe
+C:\Users\birgh\Desktop\P\gameProject\resourceCollecter\resouceCollector\resouceCollector\bin\Debug\resouceCollector.pdb
+C:\Users\birgh\Desktop\P\gameProject\resourceCollecter\resouceCollector\resouceCollector\obj\Debug\resouceCollector.csproj.AssemblyReference.cache
+C:\Users\birgh\Desktop\P\gameProject\resourceCollecter\resouceCollector\resouceCollector\obj\Debug\resouceCollector.csproj.SuggestedBindingRedirects.cache
+C:\Users\birgh\Desktop\P\gameProject\resourceCollecter\resouceCollector\resouceCollector\obj\Debug\resouceCollector.gameForm.resources
+C:\Users\birgh\Desktop\P\gameProject\resourceCollecter\resouceCollector\resouceCollector\obj\Debug\resouceCollector.Properties.Resources.resources
+C:\Users\birgh\Desktop\P\gameProject\resourceCollecter\resouceCollector\resouceCollector\obj\Debug\resouceCollector.csproj.GenerateResource.cache
+C:\Users\birgh\Desktop\P\gameProject\resourceCollecter\resouceCollector\resouceCollector\obj\Debug\resouceCollector.csproj.CoreCompileInputs.cache
+C:\Users\birgh\Desktop\P\gameProject\resourceCollecter\resouceCollector\resouceCollector\obj\Debug\resouceCollector.exe
+C:\Users\birgh\Desktop\P\gameProject\resourceCollecter\resouceCollector\resouceCollector\obj\Debug\resouceCollector.pdb

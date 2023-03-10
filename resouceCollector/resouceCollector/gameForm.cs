@@ -20,10 +20,10 @@ namespace resouceCollector
         public gameForm()
         {
             InitializeComponent();
-            iron = new Iron(1000000, 0, 0, 100, 150, 300, 600);
-            gold = new Gold(1000000, 0, 0, 200, 300, 600, 900);
-            titanium = new Titanium(100000, 0, 0, 400, 600, 1200, 1800);
-            diamond = new Diamond(100000, 0, 0, 800, 1200, 2400, 3600);
+            iron = new Iron(1, 0, 0, 100, 150, 300, 600);
+            gold = new Gold(1, 0, 0, 200, 300, 600, 900);
+            titanium = new Titanium(1, 0, 0, 400, 600, 1200, 1800);
+            diamond = new Diamond(1, 0, 0, 800, 1200, 2400, 3600);
 
             UpdateText();
             perSecondResource.Start();
