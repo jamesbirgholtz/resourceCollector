@@ -14,9 +14,17 @@
         public int PerSecondUpgrade2Count { get; set; }
         public int PerSecondUpgrade3Count { get; set; }
         public int PerClickUpgradeCount { get; set; }
-
-        public double diamondToRocket;
-        public double diamondNeeded;
+        public double diamondToRocket { get; set; }
+        public double diamondNeeded { get; set; }
+        public double perSecond1 { get; set; }
+        public double perSecond2 { get; set; }
+        public double perSecond3 { get; set; }
+        public double perSecond1UpgradeCost { get; set; }
+        public double perSecond2UpgradeCost { get; set; }
+        public double perSecond3UpgradeCost { get; set; }
+        public double increasePerSecond1UpgradeCount { get; set; }
+        public double increasePerSecond2UpgradeCount { get; set; }
+        public double increasePerSecond3UpgradeCount { get; set; }
 
         public Diamond(double perClick, double perSecond, double count, double perClickUpgradeCost,
             double perSecondUpgrade1Cost, double perSecondUpgrade2Cost, double perSecondUpgrade3Cost)
@@ -34,6 +42,15 @@
             PerClickUpgradeCount = 0;
             diamondToRocket = 0;
             diamondNeeded = 100000;
+            perSecond1 = 1;
+            perSecond2 = 2;
+            perSecond3 = 3;
+            perSecond1UpgradeCost = 1250;
+            perSecond2UpgradeCost = 2450;
+            perSecond3UpgradeCost = 3650;
+            increasePerSecond1UpgradeCount = 0;
+            increasePerSecond2UpgradeCount = 0;
+            increasePerSecond3UpgradeCount = 0;
         }
 
         public void IncreasePerClick()
@@ -52,7 +69,7 @@
             if (Count >= PerSecondUpgrade1Cost)
             {
                 Count -= PerSecondUpgrade1Cost;
-                PerSecond += 1;
+                PerSecond += perSecond1;
                 PerSecondUpgrade1Cost *= 2;
                 PerSecondUpgrade1Count++;
             }
@@ -63,7 +80,7 @@
             if (Count >= PerSecondUpgrade2Cost)
             {
                 Count -= PerSecondUpgrade2Cost;
-                PerSecond += 2;
+                PerSecond += perSecond2;
                 PerSecondUpgrade2Cost *= 2.25;
                 PerSecondUpgrade2Count++;
             }
@@ -74,7 +91,7 @@
             if (Count >= PerSecondUpgrade3Cost)
             {
                 Count -= PerSecondUpgrade3Cost;
-                PerSecond += 3;
+                PerSecond += perSecond3;
                 PerSecondUpgrade3Cost *= 2.5;
                 PerSecondUpgrade3Count++;
             }
@@ -92,6 +109,48 @@
                 diamondToRocket += Count;
                 diamondNeeded -= Count;
                 Count = 0;
+            }
+        }
+        public void IncreasePerSecond1Upgrade()
+        {
+            if (Count >= perSecond1UpgradeCost)
+            {
+                for (int i = 0; i < PerSecondUpgrade1Count; i++)
+                {
+                    PerSecond += perSecond1;
+                }
+                perSecond1 *= 2;
+                Count -= perSecond1UpgradeCost;
+                perSecond1UpgradeCost *= 2;
+                increasePerSecond1UpgradeCount++;
+            }
+        }
+        public void IncreasePerSecond2Upgrade()
+        {
+            if (Count >= perSecond2UpgradeCost)
+            {
+                for (int i = 0; i < PerSecondUpgrade2Count; i++)
+                {
+                    PerSecond += perSecond2;
+                }
+                perSecond2 *= 2;
+                Count -= perSecond2UpgradeCost;
+                perSecond2UpgradeCost *= 2;
+                increasePerSecond2UpgradeCount++;
+            }
+        }
+        public void IncreasePerSecond3Upgrade()
+        {
+            if (Count >= perSecond3UpgradeCost)
+            {
+                for (int i = 0; i < PerSecondUpgrade3Count; i++)
+                {
+                    PerSecond += perSecond3;
+                }
+                perSecond3 *= 2;
+                Count -= perSecond3UpgradeCost;
+                perSecond3UpgradeCost *= 2;
+                increasePerSecond3UpgradeCount++;
             }
         }
     }

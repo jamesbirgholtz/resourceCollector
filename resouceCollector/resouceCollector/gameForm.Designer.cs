@@ -35,7 +35,6 @@
             this.ironToRocket = new System.Windows.Forms.Button();
             this.goldToRocket = new System.Windows.Forms.Button();
             this.rocketProgressBar = new System.Windows.Forms.ProgressBar();
-            this.rocketProgressText = new System.Windows.Forms.TextBox();
             this.titaniumTextBox = new System.Windows.Forms.TextBox();
             this.ironPerClickUpgrade = new System.Windows.Forms.Button();
             this.ironPerSecondUpgrade1 = new System.Windows.Forms.Button();
@@ -59,8 +58,28 @@
             this.textUpdater = new System.Windows.Forms.Timer(this.components);
             this.perSecondResource = new System.Windows.Forms.Timer(this.components);
             this.saveGameButton = new System.Windows.Forms.Button();
-            this.resourcesToRocket = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.showMinerUpgrades = new System.Windows.Forms.Button();
+            this.minerUpgrades = new System.Windows.Forms.Panel();
+            this.ironMinerUpgrade = new System.Windows.Forms.Button();
+            this.goldMinerUpgrade = new System.Windows.Forms.Button();
+            this.titaniumMinerUpgrade = new System.Windows.Forms.Button();
+            this.diamondMinerUpgrade = new System.Windows.Forms.Button();
+            this.showDrillUpgrades = new System.Windows.Forms.Button();
+            this.drillUpgrades = new System.Windows.Forms.Panel();
+            this.diamondDrillUpgrade = new System.Windows.Forms.Button();
+            this.titaniumDrillUpgrade = new System.Windows.Forms.Button();
+            this.goldDrillUpgrade = new System.Windows.Forms.Button();
+            this.ironDrillUpgrade = new System.Windows.Forms.Button();
+            this.showEscUpgrades = new System.Windows.Forms.Button();
+            this.excavatorUpgrades = new System.Windows.Forms.Panel();
+            this.diamondEscUpgrade = new System.Windows.Forms.Button();
+            this.titaniumEscUpgrade = new System.Windows.Forms.Button();
+            this.goldEscUpgrade = new System.Windows.Forms.Button();
+            this.ironEscUpgrade = new System.Windows.Forms.Button();
+            this.minerUpgrades.SuspendLayout();
+            this.drillUpgrades.SuspendLayout();
+            this.excavatorUpgrades.SuspendLayout();
             this.SuspendLayout();
             // 
             // resourceButton
@@ -121,17 +140,6 @@
             this.rocketProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.rocketProgressBar.TabIndex = 6;
             this.rocketProgressBar.Click += new System.EventHandler(this.rocketProgressBar_Click);
-            // 
-            // rocketProgressText
-            // 
-            this.rocketProgressText.BackColor = System.Drawing.SystemColors.Control;
-            this.rocketProgressText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rocketProgressText.Location = new System.Drawing.Point(448, 436);
-            this.rocketProgressText.Name = "rocketProgressText";
-            this.rocketProgressText.ReadOnly = true;
-            this.rocketProgressText.Size = new System.Drawing.Size(266, 13);
-            this.rocketProgressText.TabIndex = 7;
-            this.rocketProgressText.TabStop = false;
             // 
             // titaniumTextBox
             // 
@@ -360,12 +368,6 @@
             this.saveGameButton.Text = "saveButton";
             this.saveGameButton.UseVisualStyleBackColor = true;
             // 
-            // resourcesToRocket
-            // 
-            this.resourcesToRocket.Enabled = true;
-            this.resourcesToRocket.Interval = 1000;
-            this.resourcesToRocket.Tick += new System.EventHandler(this.resourcesToRocket_Tick);
-            // 
             // textBox1
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -378,10 +380,232 @@
             this.textBox1.Text = "Use resources to build your rocket out of here!";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // showMinerUpgrades
+            // 
+            this.showMinerUpgrades.Location = new System.Drawing.Point(448, 436);
+            this.showMinerUpgrades.Margin = new System.Windows.Forms.Padding(0);
+            this.showMinerUpgrades.Name = "showMinerUpgrades";
+            this.showMinerUpgrades.Size = new System.Drawing.Size(130, 51);
+            this.showMinerUpgrades.TabIndex = 34;
+            this.showMinerUpgrades.Text = "MINER UPGRADES";
+            this.showMinerUpgrades.UseVisualStyleBackColor = true;
+            this.showMinerUpgrades.Click += new System.EventHandler(this.showMinerUpgrades_Click);
+            // 
+            // minerUpgrades
+            // 
+            this.minerUpgrades.Controls.Add(this.diamondMinerUpgrade);
+            this.minerUpgrades.Controls.Add(this.titaniumMinerUpgrade);
+            this.minerUpgrades.Controls.Add(this.goldMinerUpgrade);
+            this.minerUpgrades.Controls.Add(this.ironMinerUpgrade);
+            this.minerUpgrades.Location = new System.Drawing.Point(448, 487);
+            this.minerUpgrades.Margin = new System.Windows.Forms.Padding(0);
+            this.minerUpgrades.Name = "minerUpgrades";
+            this.minerUpgrades.Size = new System.Drawing.Size(130, 179);
+            this.minerUpgrades.TabIndex = 35;
+            this.minerUpgrades.Visible = false;
+            // 
+            // ironMinerUpgrade
+            // 
+            this.ironMinerUpgrade.Location = new System.Drawing.Point(0, 0);
+            this.ironMinerUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.ironMinerUpgrade.Name = "ironMinerUpgrade";
+            this.ironMinerUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.ironMinerUpgrade.TabIndex = 0;
+            this.ironMinerUpgrade.Text = "Iron miner upgrade";
+            this.ironMinerUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ironMinerUpgrade.UseVisualStyleBackColor = true;
+            this.ironMinerUpgrade.Click += new System.EventHandler(this.ironMinerUpgrade_Click);
+            // 
+            // goldMinerUpgrade
+            // 
+            this.goldMinerUpgrade.Location = new System.Drawing.Point(0, 45);
+            this.goldMinerUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.goldMinerUpgrade.Name = "goldMinerUpgrade";
+            this.goldMinerUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.goldMinerUpgrade.TabIndex = 1;
+            this.goldMinerUpgrade.Text = "Gold miner upgrade";
+            this.goldMinerUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.goldMinerUpgrade.UseVisualStyleBackColor = true;
+            this.goldMinerUpgrade.Click += new System.EventHandler(this.goldMinerUpgrade_Click);
+            // 
+            // titaniumMinerUpgrade
+            // 
+            this.titaniumMinerUpgrade.Location = new System.Drawing.Point(0, 90);
+            this.titaniumMinerUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.titaniumMinerUpgrade.Name = "titaniumMinerUpgrade";
+            this.titaniumMinerUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.titaniumMinerUpgrade.TabIndex = 2;
+            this.titaniumMinerUpgrade.Text = "Titanium miner upgrade";
+            this.titaniumMinerUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.titaniumMinerUpgrade.UseVisualStyleBackColor = true;
+            this.titaniumMinerUpgrade.Click += new System.EventHandler(this.titaniumMinerUpgrade_Click);
+            // 
+            // diamondMinerUpgrade
+            // 
+            this.diamondMinerUpgrade.Location = new System.Drawing.Point(0, 134);
+            this.diamondMinerUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.diamondMinerUpgrade.Name = "diamondMinerUpgrade";
+            this.diamondMinerUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.diamondMinerUpgrade.TabIndex = 3;
+            this.diamondMinerUpgrade.Text = "Diamond Miner Upgrade";
+            this.diamondMinerUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.diamondMinerUpgrade.UseVisualStyleBackColor = true;
+            this.diamondMinerUpgrade.Click += new System.EventHandler(this.diamondMinerUpgrade_Click);
+            // 
+            // showDrillUpgrades
+            // 
+            this.showDrillUpgrades.Location = new System.Drawing.Point(584, 436);
+            this.showDrillUpgrades.Margin = new System.Windows.Forms.Padding(0);
+            this.showDrillUpgrades.Name = "showDrillUpgrades";
+            this.showDrillUpgrades.Size = new System.Drawing.Size(130, 51);
+            this.showDrillUpgrades.TabIndex = 36;
+            this.showDrillUpgrades.Text = "DRILL UPGRADES";
+            this.showDrillUpgrades.UseVisualStyleBackColor = true;
+            this.showDrillUpgrades.Click += new System.EventHandler(this.showDrillUpgrades_Click);
+            // 
+            // drillUpgrades
+            // 
+            this.drillUpgrades.Controls.Add(this.diamondDrillUpgrade);
+            this.drillUpgrades.Controls.Add(this.titaniumDrillUpgrade);
+            this.drillUpgrades.Controls.Add(this.goldDrillUpgrade);
+            this.drillUpgrades.Controls.Add(this.ironDrillUpgrade);
+            this.drillUpgrades.Location = new System.Drawing.Point(584, 487);
+            this.drillUpgrades.Margin = new System.Windows.Forms.Padding(0);
+            this.drillUpgrades.Name = "drillUpgrades";
+            this.drillUpgrades.Size = new System.Drawing.Size(130, 179);
+            this.drillUpgrades.TabIndex = 37;
+            this.drillUpgrades.Visible = false;
+            // 
+            // diamondDrillUpgrade
+            // 
+            this.diamondDrillUpgrade.Location = new System.Drawing.Point(0, 134);
+            this.diamondDrillUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.diamondDrillUpgrade.Name = "diamondDrillUpgrade";
+            this.diamondDrillUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.diamondDrillUpgrade.TabIndex = 3;
+            this.diamondDrillUpgrade.Text = "diamond drill upgrade";
+            this.diamondDrillUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.diamondDrillUpgrade.UseVisualStyleBackColor = true;
+            this.diamondDrillUpgrade.Click += new System.EventHandler(this.diamondDrillUpgrade_Click);
+            // 
+            // titaniumDrillUpgrade
+            // 
+            this.titaniumDrillUpgrade.Location = new System.Drawing.Point(0, 90);
+            this.titaniumDrillUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.titaniumDrillUpgrade.Name = "titaniumDrillUpgrade";
+            this.titaniumDrillUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.titaniumDrillUpgrade.TabIndex = 2;
+            this.titaniumDrillUpgrade.Text = "Titanium Drill upgrade";
+            this.titaniumDrillUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.titaniumDrillUpgrade.UseVisualStyleBackColor = true;
+            this.titaniumDrillUpgrade.Click += new System.EventHandler(this.titaniumDrillUpgrade_Click);
+            // 
+            // goldDrillUpgrade
+            // 
+            this.goldDrillUpgrade.Location = new System.Drawing.Point(0, 45);
+            this.goldDrillUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.goldDrillUpgrade.Name = "goldDrillUpgrade";
+            this.goldDrillUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.goldDrillUpgrade.TabIndex = 1;
+            this.goldDrillUpgrade.Text = "Gold drill upgrade";
+            this.goldDrillUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.goldDrillUpgrade.UseVisualStyleBackColor = true;
+            this.goldDrillUpgrade.Click += new System.EventHandler(this.goldDrillUpgrade_Click);
+            // 
+            // ironDrillUpgrade
+            // 
+            this.ironDrillUpgrade.Location = new System.Drawing.Point(0, 0);
+            this.ironDrillUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.ironDrillUpgrade.Name = "ironDrillUpgrade";
+            this.ironDrillUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.ironDrillUpgrade.TabIndex = 0;
+            this.ironDrillUpgrade.Text = "Iron drill upgrade";
+            this.ironDrillUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ironDrillUpgrade.UseVisualStyleBackColor = true;
+            this.ironDrillUpgrade.Click += new System.EventHandler(this.ironDrillUpgrade_Click);
+            // 
+            // showEscUpgrades
+            // 
+            this.showEscUpgrades.Location = new System.Drawing.Point(720, 436);
+            this.showEscUpgrades.Margin = new System.Windows.Forms.Padding(0);
+            this.showEscUpgrades.Name = "showEscUpgrades";
+            this.showEscUpgrades.Size = new System.Drawing.Size(130, 51);
+            this.showEscUpgrades.TabIndex = 38;
+            this.showEscUpgrades.Text = "ESC UPGRADES";
+            this.showEscUpgrades.UseVisualStyleBackColor = true;
+            this.showEscUpgrades.Click += new System.EventHandler(this.showEscUpgrades_Click);
+            // 
+            // excavatorUpgrades
+            // 
+            this.excavatorUpgrades.Controls.Add(this.diamondEscUpgrade);
+            this.excavatorUpgrades.Controls.Add(this.titaniumEscUpgrade);
+            this.excavatorUpgrades.Controls.Add(this.goldEscUpgrade);
+            this.excavatorUpgrades.Controls.Add(this.ironEscUpgrade);
+            this.excavatorUpgrades.Location = new System.Drawing.Point(720, 487);
+            this.excavatorUpgrades.Margin = new System.Windows.Forms.Padding(0);
+            this.excavatorUpgrades.Name = "excavatorUpgrades";
+            this.excavatorUpgrades.Size = new System.Drawing.Size(130, 179);
+            this.excavatorUpgrades.TabIndex = 39;
+            this.excavatorUpgrades.Visible = false;
+            // 
+            // diamondEscUpgrade
+            // 
+            this.diamondEscUpgrade.Location = new System.Drawing.Point(0, 134);
+            this.diamondEscUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.diamondEscUpgrade.Name = "diamondEscUpgrade";
+            this.diamondEscUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.diamondEscUpgrade.TabIndex = 3;
+            this.diamondEscUpgrade.Text = "diamond esc upgrade";
+            this.diamondEscUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.diamondEscUpgrade.UseVisualStyleBackColor = true;
+            this.diamondEscUpgrade.Click += new System.EventHandler(this.diamondEscUpgrade_Click);
+            // 
+            // titaniumEscUpgrade
+            // 
+            this.titaniumEscUpgrade.Location = new System.Drawing.Point(0, 90);
+            this.titaniumEscUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.titaniumEscUpgrade.Name = "titaniumEscUpgrade";
+            this.titaniumEscUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.titaniumEscUpgrade.TabIndex = 2;
+            this.titaniumEscUpgrade.Text = "titanium esc upgrade";
+            this.titaniumEscUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.titaniumEscUpgrade.UseVisualStyleBackColor = true;
+            this.titaniumEscUpgrade.Click += new System.EventHandler(this.titaniumEscUpgrade_Click);
+            // 
+            // goldEscUpgrade
+            // 
+            this.goldEscUpgrade.Location = new System.Drawing.Point(0, 45);
+            this.goldEscUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.goldEscUpgrade.Name = "goldEscUpgrade";
+            this.goldEscUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.goldEscUpgrade.TabIndex = 1;
+            this.goldEscUpgrade.Text = "gold esc upgrade";
+            this.goldEscUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.goldEscUpgrade.UseVisualStyleBackColor = true;
+            this.goldEscUpgrade.Click += new System.EventHandler(this.goldEscUpgrade_Click);
+            // 
+            // ironEscUpgrade
+            // 
+            this.ironEscUpgrade.Location = new System.Drawing.Point(0, 0);
+            this.ironEscUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.ironEscUpgrade.Name = "ironEscUpgrade";
+            this.ironEscUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.ironEscUpgrade.TabIndex = 0;
+            this.ironEscUpgrade.Text = "Iron esc upgrade";
+            this.ironEscUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ironEscUpgrade.UseVisualStyleBackColor = true;
+            this.ironEscUpgrade.Click += new System.EventHandler(this.ironEscUpgrade_Click);
+            // 
             // gameForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(856, 678);
+            this.Controls.Add(this.excavatorUpgrades);
+            this.Controls.Add(this.showEscUpgrades);
+            this.Controls.Add(this.drillUpgrades);
+            this.Controls.Add(this.showDrillUpgrades);
+            this.Controls.Add(this.minerUpgrades);
+            this.Controls.Add(this.showMinerUpgrades);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.saveGameButton);
             this.Controls.Add(this.goldTextBox);
@@ -404,7 +628,6 @@
             this.Controls.Add(this.ironPerSecondUpgrade1);
             this.Controls.Add(this.ironPerClickUpgrade);
             this.Controls.Add(this.titaniumTextBox);
-            this.Controls.Add(this.rocketProgressText);
             this.Controls.Add(this.rocketProgressBar);
             this.Controls.Add(this.goldToRocket);
             this.Controls.Add(this.ironToRocket);
@@ -416,6 +639,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Resource Collector";
             this.Load += new System.EventHandler(this.gameForm_Load);
+            this.minerUpgrades.ResumeLayout(false);
+            this.drillUpgrades.ResumeLayout(false);
+            this.excavatorUpgrades.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -429,7 +655,6 @@
         private System.Windows.Forms.Button ironToRocket;
         private System.Windows.Forms.Button goldToRocket;
         private System.Windows.Forms.ProgressBar rocketProgressBar;
-        private System.Windows.Forms.TextBox rocketProgressText;
         private System.Windows.Forms.TextBox titaniumTextBox;
         private System.Windows.Forms.Button ironPerClickUpgrade;
         private System.Windows.Forms.Button ironPerSecondUpgrade1;
@@ -453,8 +678,25 @@
         private System.Windows.Forms.Timer textUpdater;
         private System.Windows.Forms.Timer perSecondResource;
         private System.Windows.Forms.Button saveGameButton;
-        private System.Windows.Forms.Timer resourcesToRocket;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button showMinerUpgrades;
+        private System.Windows.Forms.Panel minerUpgrades;
+        private System.Windows.Forms.Button diamondMinerUpgrade;
+        private System.Windows.Forms.Button titaniumMinerUpgrade;
+        private System.Windows.Forms.Button goldMinerUpgrade;
+        private System.Windows.Forms.Button ironMinerUpgrade;
+        private System.Windows.Forms.Button showDrillUpgrades;
+        private System.Windows.Forms.Panel drillUpgrades;
+        private System.Windows.Forms.Button diamondDrillUpgrade;
+        private System.Windows.Forms.Button titaniumDrillUpgrade;
+        private System.Windows.Forms.Button goldDrillUpgrade;
+        private System.Windows.Forms.Button ironDrillUpgrade;
+        private System.Windows.Forms.Button showEscUpgrades;
+        private System.Windows.Forms.Panel excavatorUpgrades;
+        private System.Windows.Forms.Button diamondEscUpgrade;
+        private System.Windows.Forms.Button titaniumEscUpgrade;
+        private System.Windows.Forms.Button goldEscUpgrade;
+        private System.Windows.Forms.Button ironEscUpgrade;
     }
 }
 
