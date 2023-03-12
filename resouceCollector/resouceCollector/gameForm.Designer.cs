@@ -61,10 +61,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.showMinerUpgrades = new System.Windows.Forms.Button();
             this.minerUpgrades = new System.Windows.Forms.Panel();
-            this.ironMinerUpgrade = new System.Windows.Forms.Button();
-            this.goldMinerUpgrade = new System.Windows.Forms.Button();
-            this.titaniumMinerUpgrade = new System.Windows.Forms.Button();
             this.diamondMinerUpgrade = new System.Windows.Forms.Button();
+            this.titaniumMinerUpgrade = new System.Windows.Forms.Button();
+            this.goldMinerUpgrade = new System.Windows.Forms.Button();
+            this.ironMinerUpgrade = new System.Windows.Forms.Button();
             this.showDrillUpgrades = new System.Windows.Forms.Button();
             this.drillUpgrades = new System.Windows.Forms.Panel();
             this.diamondDrillUpgrade = new System.Windows.Forms.Button();
@@ -84,6 +84,7 @@
             // 
             // resourceButton
             // 
+            this.resourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resourceButton.Location = new System.Drawing.Point(12, 154);
             this.resourceButton.Name = "resourceButton";
             this.resourceButton.Size = new System.Drawing.Size(286, 276);
@@ -94,6 +95,7 @@
             // 
             // titaniumToRocket
             // 
+            this.titaniumToRocket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.titaniumToRocket.Location = new System.Drawing.Point(12, 570);
             this.titaniumToRocket.Name = "titaniumToRocket";
             this.titaniumToRocket.Size = new System.Drawing.Size(140, 71);
@@ -104,6 +106,7 @@
             // 
             // diamondToRocket
             // 
+            this.diamondToRocket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.diamondToRocket.Location = new System.Drawing.Point(158, 570);
             this.diamondToRocket.Name = "diamondToRocket";
             this.diamondToRocket.Size = new System.Drawing.Size(140, 71);
@@ -114,6 +117,7 @@
             // 
             // ironToRocket
             // 
+            this.ironToRocket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ironToRocket.Location = new System.Drawing.Point(12, 493);
             this.ironToRocket.Name = "ironToRocket";
             this.ironToRocket.Size = new System.Drawing.Size(140, 71);
@@ -124,6 +128,7 @@
             // 
             // goldToRocket
             // 
+            this.goldToRocket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.goldToRocket.Location = new System.Drawing.Point(158, 493);
             this.goldToRocket.Name = "goldToRocket";
             this.goldToRocket.Size = new System.Drawing.Size(140, 71);
@@ -137,6 +142,7 @@
             this.rocketProgressBar.Location = new System.Drawing.Point(12, 643);
             this.rocketProgressBar.Name = "rocketProgressBar";
             this.rocketProgressBar.Size = new System.Drawing.Size(286, 23);
+            this.rocketProgressBar.Step = 1;
             this.rocketProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.rocketProgressBar.TabIndex = 6;
             this.rocketProgressBar.Click += new System.EventHandler(this.rocketProgressBar_Click);
@@ -144,7 +150,7 @@
             // titaniumTextBox
             // 
             this.titaniumTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.titaniumTextBox.Location = new System.Drawing.Point(12, 83);
+            this.titaniumTextBox.Location = new System.Drawing.Point(22, 83);
             this.titaniumTextBox.Multiline = true;
             this.titaniumTextBox.Name = "titaniumTextBox";
             this.titaniumTextBox.ReadOnly = true;
@@ -155,6 +161,7 @@
             // 
             // ironPerClickUpgrade
             // 
+            this.ironPerClickUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ironPerClickUpgrade.Location = new System.Drawing.Point(312, 12);
             this.ironPerClickUpgrade.Name = "ironPerClickUpgrade";
             this.ironPerClickUpgrade.Size = new System.Drawing.Size(130, 100);
@@ -164,6 +171,7 @@
             // 
             // ironPerSecondUpgrade1
             // 
+            this.ironPerSecondUpgrade1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ironPerSecondUpgrade1.Location = new System.Drawing.Point(448, 12);
             this.ironPerSecondUpgrade1.Name = "ironPerSecondUpgrade1";
             this.ironPerSecondUpgrade1.Size = new System.Drawing.Size(130, 100);
@@ -174,6 +182,7 @@
             // 
             // ironPerSecondUpgrade2
             // 
+            this.ironPerSecondUpgrade2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ironPerSecondUpgrade2.Location = new System.Drawing.Point(584, 12);
             this.ironPerSecondUpgrade2.Name = "ironPerSecondUpgrade2";
             this.ironPerSecondUpgrade2.Size = new System.Drawing.Size(130, 100);
@@ -184,6 +193,7 @@
             // 
             // ironPerSecondUpgrade3
             // 
+            this.ironPerSecondUpgrade3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ironPerSecondUpgrade3.Location = new System.Drawing.Point(720, 12);
             this.ironPerSecondUpgrade3.Name = "ironPerSecondUpgrade3";
             this.ironPerSecondUpgrade3.Size = new System.Drawing.Size(130, 100);
@@ -194,6 +204,7 @@
             // 
             // goldPerSecondUpgrade3
             // 
+            this.goldPerSecondUpgrade3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.goldPerSecondUpgrade3.Location = new System.Drawing.Point(720, 118);
             this.goldPerSecondUpgrade3.Name = "goldPerSecondUpgrade3";
             this.goldPerSecondUpgrade3.Size = new System.Drawing.Size(130, 100);
@@ -204,6 +215,7 @@
             // 
             // goldPerSecondUpgrade2
             // 
+            this.goldPerSecondUpgrade2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.goldPerSecondUpgrade2.Location = new System.Drawing.Point(584, 118);
             this.goldPerSecondUpgrade2.Name = "goldPerSecondUpgrade2";
             this.goldPerSecondUpgrade2.Size = new System.Drawing.Size(130, 100);
@@ -214,6 +226,7 @@
             // 
             // goldPerSecondUpgrade1
             // 
+            this.goldPerSecondUpgrade1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.goldPerSecondUpgrade1.Location = new System.Drawing.Point(448, 118);
             this.goldPerSecondUpgrade1.Name = "goldPerSecondUpgrade1";
             this.goldPerSecondUpgrade1.Size = new System.Drawing.Size(130, 100);
@@ -224,6 +237,7 @@
             // 
             // goldPerClickUpgrade
             // 
+            this.goldPerClickUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.goldPerClickUpgrade.Location = new System.Drawing.Point(312, 118);
             this.goldPerClickUpgrade.Name = "goldPerClickUpgrade";
             this.goldPerClickUpgrade.Size = new System.Drawing.Size(130, 100);
@@ -234,6 +248,7 @@
             // 
             // titaniumPerSecondUpgrade3
             // 
+            this.titaniumPerSecondUpgrade3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.titaniumPerSecondUpgrade3.Location = new System.Drawing.Point(720, 224);
             this.titaniumPerSecondUpgrade3.Name = "titaniumPerSecondUpgrade3";
             this.titaniumPerSecondUpgrade3.Size = new System.Drawing.Size(130, 100);
@@ -244,6 +259,7 @@
             // 
             // titaniumPerSecondUpgrade2
             // 
+            this.titaniumPerSecondUpgrade2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.titaniumPerSecondUpgrade2.Location = new System.Drawing.Point(584, 224);
             this.titaniumPerSecondUpgrade2.Name = "titaniumPerSecondUpgrade2";
             this.titaniumPerSecondUpgrade2.Size = new System.Drawing.Size(130, 100);
@@ -254,6 +270,7 @@
             // 
             // titaniumPerSecondUpgrade1
             // 
+            this.titaniumPerSecondUpgrade1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.titaniumPerSecondUpgrade1.Location = new System.Drawing.Point(448, 224);
             this.titaniumPerSecondUpgrade1.Name = "titaniumPerSecondUpgrade1";
             this.titaniumPerSecondUpgrade1.Size = new System.Drawing.Size(130, 100);
@@ -264,6 +281,7 @@
             // 
             // titaniumPerClickUpgrade
             // 
+            this.titaniumPerClickUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.titaniumPerClickUpgrade.Location = new System.Drawing.Point(312, 224);
             this.titaniumPerClickUpgrade.Name = "titaniumPerClickUpgrade";
             this.titaniumPerClickUpgrade.Size = new System.Drawing.Size(130, 100);
@@ -274,6 +292,7 @@
             // 
             // diamondPerSecondUpgrade3
             // 
+            this.diamondPerSecondUpgrade3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.diamondPerSecondUpgrade3.Location = new System.Drawing.Point(720, 330);
             this.diamondPerSecondUpgrade3.Name = "diamondPerSecondUpgrade3";
             this.diamondPerSecondUpgrade3.Size = new System.Drawing.Size(130, 100);
@@ -284,6 +303,7 @@
             // 
             // diamondPerSecondUpgrade2
             // 
+            this.diamondPerSecondUpgrade2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.diamondPerSecondUpgrade2.Location = new System.Drawing.Point(584, 330);
             this.diamondPerSecondUpgrade2.Name = "diamondPerSecondUpgrade2";
             this.diamondPerSecondUpgrade2.Size = new System.Drawing.Size(130, 100);
@@ -294,6 +314,7 @@
             // 
             // diamondPerSecondUpgrade1
             // 
+            this.diamondPerSecondUpgrade1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.diamondPerSecondUpgrade1.Location = new System.Drawing.Point(448, 330);
             this.diamondPerSecondUpgrade1.Name = "diamondPerSecondUpgrade1";
             this.diamondPerSecondUpgrade1.Size = new System.Drawing.Size(130, 100);
@@ -304,6 +325,7 @@
             // 
             // diamondPerClickUpgrade
             // 
+            this.diamondPerClickUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.diamondPerClickUpgrade.Location = new System.Drawing.Point(312, 330);
             this.diamondPerClickUpgrade.Name = "diamondPerClickUpgrade";
             this.diamondPerClickUpgrade.Size = new System.Drawing.Size(130, 100);
@@ -361,12 +383,14 @@
             // 
             // saveGameButton
             // 
+            this.saveGameButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.saveGameButton.Location = new System.Drawing.Point(12, 436);
             this.saveGameButton.Name = "saveGameButton";
             this.saveGameButton.Size = new System.Drawing.Size(286, 32);
             this.saveGameButton.TabIndex = 31;
             this.saveGameButton.Text = "saveButton";
             this.saveGameButton.UseVisualStyleBackColor = true;
+            this.saveGameButton.Click += new System.EventHandler(this.saveGameButton_Click);
             // 
             // textBox1
             // 
@@ -382,6 +406,7 @@
             // 
             // showMinerUpgrades
             // 
+            this.showMinerUpgrades.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.showMinerUpgrades.Location = new System.Drawing.Point(448, 436);
             this.showMinerUpgrades.Margin = new System.Windows.Forms.Padding(0);
             this.showMinerUpgrades.Name = "showMinerUpgrades";
@@ -404,44 +429,9 @@
             this.minerUpgrades.TabIndex = 35;
             this.minerUpgrades.Visible = false;
             // 
-            // ironMinerUpgrade
-            // 
-            this.ironMinerUpgrade.Location = new System.Drawing.Point(0, 0);
-            this.ironMinerUpgrade.Margin = new System.Windows.Forms.Padding(0);
-            this.ironMinerUpgrade.Name = "ironMinerUpgrade";
-            this.ironMinerUpgrade.Size = new System.Drawing.Size(130, 45);
-            this.ironMinerUpgrade.TabIndex = 0;
-            this.ironMinerUpgrade.Text = "Iron miner upgrade";
-            this.ironMinerUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ironMinerUpgrade.UseVisualStyleBackColor = true;
-            this.ironMinerUpgrade.Click += new System.EventHandler(this.ironMinerUpgrade_Click);
-            // 
-            // goldMinerUpgrade
-            // 
-            this.goldMinerUpgrade.Location = new System.Drawing.Point(0, 45);
-            this.goldMinerUpgrade.Margin = new System.Windows.Forms.Padding(0);
-            this.goldMinerUpgrade.Name = "goldMinerUpgrade";
-            this.goldMinerUpgrade.Size = new System.Drawing.Size(130, 45);
-            this.goldMinerUpgrade.TabIndex = 1;
-            this.goldMinerUpgrade.Text = "Gold miner upgrade";
-            this.goldMinerUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.goldMinerUpgrade.UseVisualStyleBackColor = true;
-            this.goldMinerUpgrade.Click += new System.EventHandler(this.goldMinerUpgrade_Click);
-            // 
-            // titaniumMinerUpgrade
-            // 
-            this.titaniumMinerUpgrade.Location = new System.Drawing.Point(0, 90);
-            this.titaniumMinerUpgrade.Margin = new System.Windows.Forms.Padding(0);
-            this.titaniumMinerUpgrade.Name = "titaniumMinerUpgrade";
-            this.titaniumMinerUpgrade.Size = new System.Drawing.Size(130, 45);
-            this.titaniumMinerUpgrade.TabIndex = 2;
-            this.titaniumMinerUpgrade.Text = "Titanium miner upgrade";
-            this.titaniumMinerUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.titaniumMinerUpgrade.UseVisualStyleBackColor = true;
-            this.titaniumMinerUpgrade.Click += new System.EventHandler(this.titaniumMinerUpgrade_Click);
-            // 
             // diamondMinerUpgrade
             // 
+            this.diamondMinerUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.diamondMinerUpgrade.Location = new System.Drawing.Point(0, 134);
             this.diamondMinerUpgrade.Margin = new System.Windows.Forms.Padding(0);
             this.diamondMinerUpgrade.Name = "diamondMinerUpgrade";
@@ -452,8 +442,48 @@
             this.diamondMinerUpgrade.UseVisualStyleBackColor = true;
             this.diamondMinerUpgrade.Click += new System.EventHandler(this.diamondMinerUpgrade_Click);
             // 
+            // titaniumMinerUpgrade
+            // 
+            this.titaniumMinerUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.titaniumMinerUpgrade.Location = new System.Drawing.Point(0, 90);
+            this.titaniumMinerUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.titaniumMinerUpgrade.Name = "titaniumMinerUpgrade";
+            this.titaniumMinerUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.titaniumMinerUpgrade.TabIndex = 2;
+            this.titaniumMinerUpgrade.Text = "Titanium miner upgrade";
+            this.titaniumMinerUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.titaniumMinerUpgrade.UseVisualStyleBackColor = true;
+            this.titaniumMinerUpgrade.Click += new System.EventHandler(this.titaniumMinerUpgrade_Click);
+            // 
+            // goldMinerUpgrade
+            // 
+            this.goldMinerUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.goldMinerUpgrade.Location = new System.Drawing.Point(0, 45);
+            this.goldMinerUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.goldMinerUpgrade.Name = "goldMinerUpgrade";
+            this.goldMinerUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.goldMinerUpgrade.TabIndex = 1;
+            this.goldMinerUpgrade.Text = "Gold miner upgrade";
+            this.goldMinerUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.goldMinerUpgrade.UseVisualStyleBackColor = true;
+            this.goldMinerUpgrade.Click += new System.EventHandler(this.goldMinerUpgrade_Click);
+            // 
+            // ironMinerUpgrade
+            // 
+            this.ironMinerUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ironMinerUpgrade.Location = new System.Drawing.Point(0, 0);
+            this.ironMinerUpgrade.Margin = new System.Windows.Forms.Padding(0);
+            this.ironMinerUpgrade.Name = "ironMinerUpgrade";
+            this.ironMinerUpgrade.Size = new System.Drawing.Size(130, 45);
+            this.ironMinerUpgrade.TabIndex = 0;
+            this.ironMinerUpgrade.Text = "Iron miner upgrade";
+            this.ironMinerUpgrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ironMinerUpgrade.UseVisualStyleBackColor = true;
+            this.ironMinerUpgrade.Click += new System.EventHandler(this.ironMinerUpgrade_Click);
+            // 
             // showDrillUpgrades
             // 
+            this.showDrillUpgrades.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.showDrillUpgrades.Location = new System.Drawing.Point(584, 436);
             this.showDrillUpgrades.Margin = new System.Windows.Forms.Padding(0);
             this.showDrillUpgrades.Name = "showDrillUpgrades";
@@ -478,6 +508,7 @@
             // 
             // diamondDrillUpgrade
             // 
+            this.diamondDrillUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.diamondDrillUpgrade.Location = new System.Drawing.Point(0, 134);
             this.diamondDrillUpgrade.Margin = new System.Windows.Forms.Padding(0);
             this.diamondDrillUpgrade.Name = "diamondDrillUpgrade";
@@ -490,6 +521,7 @@
             // 
             // titaniumDrillUpgrade
             // 
+            this.titaniumDrillUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.titaniumDrillUpgrade.Location = new System.Drawing.Point(0, 90);
             this.titaniumDrillUpgrade.Margin = new System.Windows.Forms.Padding(0);
             this.titaniumDrillUpgrade.Name = "titaniumDrillUpgrade";
@@ -502,6 +534,7 @@
             // 
             // goldDrillUpgrade
             // 
+            this.goldDrillUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.goldDrillUpgrade.Location = new System.Drawing.Point(0, 45);
             this.goldDrillUpgrade.Margin = new System.Windows.Forms.Padding(0);
             this.goldDrillUpgrade.Name = "goldDrillUpgrade";
@@ -514,6 +547,7 @@
             // 
             // ironDrillUpgrade
             // 
+            this.ironDrillUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ironDrillUpgrade.Location = new System.Drawing.Point(0, 0);
             this.ironDrillUpgrade.Margin = new System.Windows.Forms.Padding(0);
             this.ironDrillUpgrade.Name = "ironDrillUpgrade";
@@ -526,6 +560,7 @@
             // 
             // showEscUpgrades
             // 
+            this.showEscUpgrades.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.showEscUpgrades.Location = new System.Drawing.Point(720, 436);
             this.showEscUpgrades.Margin = new System.Windows.Forms.Padding(0);
             this.showEscUpgrades.Name = "showEscUpgrades";
@@ -550,6 +585,7 @@
             // 
             // diamondEscUpgrade
             // 
+            this.diamondEscUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.diamondEscUpgrade.Location = new System.Drawing.Point(0, 134);
             this.diamondEscUpgrade.Margin = new System.Windows.Forms.Padding(0);
             this.diamondEscUpgrade.Name = "diamondEscUpgrade";
@@ -562,6 +598,7 @@
             // 
             // titaniumEscUpgrade
             // 
+            this.titaniumEscUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.titaniumEscUpgrade.Location = new System.Drawing.Point(0, 90);
             this.titaniumEscUpgrade.Margin = new System.Windows.Forms.Padding(0);
             this.titaniumEscUpgrade.Name = "titaniumEscUpgrade";
@@ -574,6 +611,7 @@
             // 
             // goldEscUpgrade
             // 
+            this.goldEscUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.goldEscUpgrade.Location = new System.Drawing.Point(0, 45);
             this.goldEscUpgrade.Margin = new System.Windows.Forms.Padding(0);
             this.goldEscUpgrade.Name = "goldEscUpgrade";
@@ -586,6 +624,7 @@
             // 
             // ironEscUpgrade
             // 
+            this.ironEscUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ironEscUpgrade.Location = new System.Drawing.Point(0, 0);
             this.ironEscUpgrade.Margin = new System.Windows.Forms.Padding(0);
             this.ironEscUpgrade.Name = "ironEscUpgrade";
@@ -635,6 +674,7 @@
             this.Controls.Add(this.titaniumToRocket);
             this.Controls.Add(this.resourceButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimumSize = new System.Drawing.Size(872, 0);
             this.Name = "gameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Resource Collector";

@@ -98,16 +98,21 @@
         }
         public void ContributeToRocket()
         {
-            if (Count >= goldNeeded)
+            if (goldToRocket >= goldNeeded)
             {
-                goldToRocket += goldNeeded;
-                Count -= goldNeeded;
-                goldNeeded = 0;
+                // gold needed has already been met, do nothing
+                return;
+            }
+
+            if (Count >= goldNeeded - goldToRocket)
+            {
+                goldToRocket = goldNeeded;
+                Count -= goldNeeded - goldToRocket;
+                // disable the button or prevent further contributions here
             }
             else
             {
                 goldToRocket += Count;
-                goldNeeded -= Count;
                 Count = 0;
             }
         }

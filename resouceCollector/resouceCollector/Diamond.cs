@@ -98,16 +98,21 @@
         }
         public void ContributeToRocket()
         {
-            if (Count >= diamondNeeded)
+            if (diamondToRocket >= diamondNeeded)
             {
-                diamondToRocket += diamondNeeded;
-                Count -= diamondNeeded;
-                diamondNeeded = 0;
+                // gold needed has already been met, do nothing
+                return;
+            }
+
+            if (Count >= diamondNeeded - diamondToRocket)
+            {
+                diamondToRocket = diamondNeeded;
+                Count -= diamondNeeded - diamondToRocket;
+                // disable the button or prevent further contributions here
             }
             else
             {
                 diamondToRocket += Count;
-                diamondNeeded -= Count;
                 Count = 0;
             }
         }

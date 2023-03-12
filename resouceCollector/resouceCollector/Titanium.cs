@@ -98,16 +98,21 @@
         }
         public void ContributeToRocket()
         {
-            if (Count >= titaniumNeeded)
+            if (titaniumToRocket >= titaniumNeeded)
             {
-                titaniumToRocket += titaniumNeeded;
-                Count -= titaniumNeeded;
-                titaniumNeeded = 0;
+                // gold needed has already been met, do nothing
+                return;
+            }
+
+            if (Count >= titaniumNeeded - titaniumToRocket)
+            {
+                titaniumToRocket = titaniumNeeded;
+                Count -= titaniumNeeded - titaniumToRocket;
+                // disable the button or prevent further contributions here
             }
             else
             {
                 titaniumToRocket += Count;
-                titaniumNeeded -= Count;
                 Count = 0;
             }
         }

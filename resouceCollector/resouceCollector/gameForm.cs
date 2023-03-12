@@ -20,10 +20,10 @@ namespace resouceCollector
         public gameForm()
         {
             InitializeComponent();
-            iron = new Iron(1000, 0, 0, 100, 150, 300, 600);
-            gold = new Gold(1000, 0, 0, 200, 300, 600, 900);
-            titanium = new Titanium(1000, 0, 0, 400, 600, 1200, 1800);
-            diamond = new Diamond(1000, 0, 0, 800, 1200, 2400, 3600);
+            iron = new Iron(100000, 0, 0, 100, 150, 300, 600);
+            gold = new Gold(1000000, 0, 0, 200, 300, 600, 900);
+            titanium = new Titanium(1000000, 0, 0, 400, 600, 1200, 1800);
+            diamond = new Diamond(1000000, 0, 0, 800, 1200, 2400, 3600);
 
             UpdateText();
             perSecondResource.Start();
@@ -33,14 +33,16 @@ namespace resouceCollector
 
         private void rocketProgressTracker()
         {
-            if (rocketProgressBar.Value < 100)
+            double rocketResourcesNeeded = iron.ironNeeded + gold.goldNeeded + titanium.titaniumNeeded + diamond.diamondNeeded;
+            double rocketResourcesCollected = iron.ironToRocket + gold.goldToRocket + titanium.titaniumToRocket + diamond.diamondToRocket;
+
+            if (rocketResourcesNeeded > 0)
             {
-                double rocketResourcesNeeded = iron.ironNeeded + gold.goldNeeded + titanium.titaniumNeeded + diamond.diamondNeeded;
-                double rocketReasourcesCollected = iron.ironToRocket + gold.goldToRocket + titanium.titaniumToRocket + diamond.diamondToRocket;
-                double rocketProgress = rocketReasourcesCollected / rocketResourcesNeeded * 100;
-                rocketProgressBar.Value = Math.Min((int)rocketProgress, 100);
+                double rocketProgress = rocketResourcesCollected / rocketResourcesNeeded * 100;
+                rocketProgressBar.Value = (int)rocketProgress;
             }
-            else {
+            if (rocketProgressBar.Value == 100)
+            {
                 ironToRocket.Enabled = false;
                 goldToRocket.Enabled = false;
                 titaniumToRocket.Enabled = false;
@@ -55,35 +57,34 @@ namespace resouceCollector
             rocketProgressTracker();
         }
 
-        private void hideSubMenu() {
-            if (minerUpgrades.Visible == true) { 
+        private void hideSubMenu()
+        {
+            if (minerUpgrades.Visible == true)
+            {
                 minerUpgrades.Visible = false;
             }
-            if (drillUpgrades.Visible == true) { 
-                drillUpgrades.Visible=false;
+            if (drillUpgrades.Visible == true)
+            {
+                drillUpgrades.Visible = false;
             }
-            if (excavatorUpgrades.Visible == true) {
+            if (excavatorUpgrades.Visible == true)
+            {
                 excavatorUpgrades.Visible = false;
             }
-        
+
         }
-
-
-
-        private void showSubMenu(Panel subMenu) {
+        private void showSubMenu(Panel subMenu)
+        {
             if (subMenu.Visible == false)
             {
                 hideSubMenu();
                 subMenu.Visible = true;
             }
-            else { 
+            else
+            {
                 subMenu.Visible = false;
             }
         }
-
-
-
-
         //update textboxes
         private void UpdateText()
         {
@@ -112,12 +113,12 @@ namespace resouceCollector
             diamondPerSecondUpgrade2.Text = "Diamond Drill\n Increases diamond by " + diamond.perSecond2 + " per second\n\n Cost: " + diamond.PerSecondUpgrade2Cost.ToString("F0") + " diamond";
             diamondPerSecondUpgrade3.Text = "Diamond Escavator\n Increases diamond by " + diamond.perSecond3 + " per second\n\n Cost: " + diamond.PerSecondUpgrade3Cost.ToString("F0") + " diamond";
 
-            ironToRocket.Text = "send iron to rocket\n" + iron.ironToRocket.ToString("F0") + " total sent\n" + iron.ironNeeded.ToString("F0") + " needed!";
-            goldToRocket.Text = "send gold to rocket\n" + gold.goldToRocket.ToString("F0") + " total sent\n" + gold.goldNeeded.ToString("F0") + " needed!";
-            titaniumToRocket.Text = "send titanium to rocket\n" + titanium.titaniumToRocket.ToString("F0") + " total sent\n" + titanium.titaniumNeeded.ToString("F0") + " needed!";
-            diamondToRocket.Text = "send diamond to rocket\n" + diamond.diamondToRocket.ToString("F0") + " total sent\n" + diamond.diamondNeeded.ToString("F0") + " needed!";
+            ironToRocket.Text = "send iron to rocket\n" + iron.ironToRocket.ToString("F0") + " total sent\n" + (iron.ironNeeded - iron.ironToRocket).ToString("F0") + " needed!";
+            goldToRocket.Text = "send gold to rocket\n" + gold.goldToRocket.ToString("F0") + " total sent\n" + (gold.goldNeeded - gold.goldToRocket).ToString("F0") + " needed!";
+            titaniumToRocket.Text = "send titanium to rocket\n" + titanium.titaniumToRocket.ToString("F0") + " total sent\n" + (titanium.titaniumNeeded - titanium.titaniumToRocket).ToString("F0") + " needed!";
+            diamondToRocket.Text = "send diamond to rocket\n" + diamond.diamondToRocket.ToString("F0") + " total sent\n" + (diamond.diamondNeeded - diamond.diamondToRocket).ToString("F0") + " needed!";
 
-            ironMinerUpgrade.Text = "iron miner + "+ iron.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + iron.perSecond1UpgradeCost.ToString("F0") + " iron";
+            ironMinerUpgrade.Text = "iron miner + " + iron.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + iron.perSecond1UpgradeCost.ToString("F0") + " iron";
             goldMinerUpgrade.Text = "gold miner + " + gold.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + gold.perSecond1UpgradeCost.ToString("F0") + " gold";
             titaniumMinerUpgrade.Text = "titanium miner + " + titanium.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + titanium.perSecond1UpgradeCost.ToString("F0") + " titanium";
             diamondMinerUpgrade.Text = "diamond miner + " + diamond.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + diamond.perSecond1UpgradeCost.ToString("F0") + " diamond";
@@ -333,7 +334,7 @@ namespace resouceCollector
 
         private void goldEscUpgrade_Click(object sender, EventArgs e)
         {
-            gold.IncreasePerSecond3Upgrade() ;
+            gold.IncreasePerSecond3Upgrade();
         }
 
         private void titaniumEscUpgrade_Click(object sender, EventArgs e)
@@ -344,6 +345,11 @@ namespace resouceCollector
         private void diamondEscUpgrade_Click(object sender, EventArgs e)
         {
             diamond.IncreasePerSecond3Upgrade();
+        }
+
+        private void saveGameButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
