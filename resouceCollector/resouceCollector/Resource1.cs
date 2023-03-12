@@ -1,8 +1,7 @@
 ﻿namespace resouceCollector
 {
-    internal class Diamond
+    internal class Resource1
     {
-
         public double PerClick { get; set; }
         public double PerSecond { get; set; }
         public double Count { get; set; }
@@ -14,8 +13,8 @@
         public int PerSecondUpgrade2Count { get; set; }
         public int PerSecondUpgrade3Count { get; set; }
         public int PerClickUpgradeCount { get; set; }
-        public double diamondToRocket { get; set; }
-        public double diamondNeeded { get; set; }
+        public double resource1ToRocket { get; set; }
+        public double resource1Needed { get; set; }
         public double perSecond1 { get; set; }
         public double perSecond2 { get; set; }
         public double perSecond3 { get; set; }
@@ -26,7 +25,8 @@
         public double increasePerSecond2UpgradeCount { get; set; }
         public double increasePerSecond3UpgradeCount { get; set; }
 
-        public Diamond(double perClick, double perSecond, double count, double perClickUpgradeCost,
+
+        public Resource1(double perClick, double perSecond, double count, double perClickUpgradeCost,
             double perSecondUpgrade1Cost, double perSecondUpgrade2Cost, double perSecondUpgrade3Cost)
         {
             PerClick = perClick;
@@ -40,14 +40,14 @@
             PerSecondUpgrade2Count = 0;
             PerSecondUpgrade3Count = 0;
             PerClickUpgradeCount = 0;
-            diamondToRocket = 0;
-            diamondNeeded = 100000;
-            perSecond1 = 1;
-            perSecond2 = 2;
-            perSecond3 = 3;
-            perSecond1UpgradeCost = 1250;
-            perSecond2UpgradeCost = 2450;
-            perSecond3UpgradeCost = 3650;
+            resource1ToRocket = 0;
+            resource1Needed = 1000000000;
+            perSecond1 = 15;
+            perSecond2 = 30;
+            perSecond3 = 45;
+            perSecond1UpgradeCost = 200;
+            perSecond2UpgradeCost = 400;
+            perSecond3UpgradeCost = 650;
             increasePerSecond1UpgradeCount = 0;
             increasePerSecond2UpgradeCount = 0;
             increasePerSecond3UpgradeCount = 0;
@@ -70,7 +70,7 @@
             {
                 Count -= PerSecondUpgrade1Cost;
                 PerSecond += perSecond1;
-                PerSecondUpgrade1Cost *= 2;
+                PerSecondUpgrade1Cost *= 1.25;
                 PerSecondUpgrade1Count++;
             }
         }
@@ -81,7 +81,7 @@
             {
                 Count -= PerSecondUpgrade2Cost;
                 PerSecond += perSecond2;
-                PerSecondUpgrade2Cost *= 2.25;
+                PerSecondUpgrade2Cost *= 1.50;
                 PerSecondUpgrade2Count++;
             }
         }
@@ -92,27 +92,25 @@
             {
                 Count -= PerSecondUpgrade3Cost;
                 PerSecond += perSecond3;
-                PerSecondUpgrade3Cost *= 2.5;
+                PerSecondUpgrade3Cost *= 1.75;
                 PerSecondUpgrade3Count++;
             }
         }
         public void ContributeToRocket()
         {
-            if (diamondToRocket >= diamondNeeded)
+            if (resource1ToRocket >= resource1Needed)
             {
-                // gold needed has already been met, do nothing
                 return;
             }
 
-            if (Count >= diamondNeeded - diamondToRocket)
+            if (Count >= resource1Needed - resource1ToRocket)
             {
-                diamondToRocket = diamondNeeded;
-                Count -= diamondNeeded - diamondToRocket;
-                // disable the button or prevent further contributions here
+                resource1ToRocket = resource1Needed;
+                Count -= resource1Needed - resource1ToRocket;
             }
             else
             {
-                diamondToRocket += Count;
+                resource1ToRocket += Count;
                 Count = 0;
             }
         }
@@ -160,3 +158,4 @@
         }
     }
 }
+

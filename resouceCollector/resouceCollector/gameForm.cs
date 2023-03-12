@@ -10,20 +10,22 @@ namespace resouceCollector
 
         }
 
-        private readonly Iron iron;
-        private readonly Gold gold;
-        private readonly Titanium titanium;
-        private readonly Diamond diamond;
+        private readonly Resource1 resource1;
+        private readonly Resource2 resource2;
+        private readonly Resource3 resource3;
+        private readonly Resource4 resource4;
+        private int worldCounter = 0;
+        private int upgradeTokens = 0;
 
 
 
         public gameForm()
         {
             InitializeComponent();
-            iron = new Iron(100000, 0, 0, 100, 150, 300, 600);
-            gold = new Gold(1000000, 0, 0, 200, 300, 600, 900);
-            titanium = new Titanium(1000000, 0, 0, 400, 600, 1200, 1800);
-            diamond = new Diamond(1000000, 0, 0, 800, 1200, 2400, 3600);
+            resource1 = new Resource1(100000000, 0, 0, 100, 150, 300, 600);
+            resource2 = new Resource2(100000000, 0, 0, 200, 300, 600, 900);
+            resource3 = new Resource3(100000000, 0, 0, 400, 600, 1200, 1800);
+            resource4 = new Resource4(100000000, 0, 0, 800, 1200, 2400, 3600);
 
             UpdateText();
             perSecondResource.Start();
@@ -33,8 +35,8 @@ namespace resouceCollector
 
         private void rocketProgressTracker()
         {
-            double rocketResourcesNeeded = iron.ironNeeded + gold.goldNeeded + titanium.titaniumNeeded + diamond.diamondNeeded;
-            double rocketResourcesCollected = iron.ironToRocket + gold.goldToRocket + titanium.titaniumToRocket + diamond.diamondToRocket;
+            double rocketResourcesNeeded = resource1.resource1Needed + resource2.resource2Needed + resource3.resource3Needed + resource4.resource4Needed;
+            double rocketResourcesCollected = resource1.resource1ToRocket + resource2.resource2ToRocket + resource3.resource3ToRocket + resource4.resource4ToRocket;
 
             if (rocketResourcesNeeded > 0)
             {
@@ -43,11 +45,100 @@ namespace resouceCollector
             }
             if (rocketProgressBar.Value == 100)
             {
-                ironToRocket.Enabled = false;
-                goldToRocket.Enabled = false;
-                titaniumToRocket.Enabled = false;
-                diamondToRocket.Enabled = false;
+                resource1ToRocket.Enabled = false;
+                resource2ToRocket.Enabled = false;
+                resource3ToRocket.Enabled = false;
+                resource4ToRocket.Enabled = false;
+                resourceButton.Enabled = false;
+                launchButton.Visible = true;
+                launchButton.Enabled = true;
             }
+        }
+
+        private void ButtonEnable() {
+            if (worldCounter != 0) { 
+                tokenUpgrades.Enabled = true;
+                tokenUpgrades.Visible = true;
+            }
+        }
+
+        private void NewWorld() {
+                resource1.PerSecond = 0;
+                resource1.Count = 0;
+                resource1.PerClick = 1000000000;
+                resource1.PerSecondUpgrade1Count = 0;
+                resource1.PerSecondUpgrade2Count = 0;
+                resource1.PerSecondUpgrade3Count = 0;
+                resource1.PerClickUpgradeCount = 0;
+                resource1.resource1ToRocket = 0;
+                resource1.resource1Needed = 1000000000;
+                resource1.perSecond1 = 15;
+                resource1.perSecond2 = 30;
+                resource1.perSecond3 = 45;
+                resource1.perSecond1UpgradeCost = 200;
+                resource1.perSecond2UpgradeCost = 400;
+                resource1.perSecond3UpgradeCost = 650;
+                resource1.increasePerSecond1UpgradeCount = 0;
+                resource1.increasePerSecond2UpgradeCount = 0;
+                resource1.increasePerSecond3UpgradeCount = 0;
+
+                resource2.PerClick = 10000000000;
+                resource2.PerSecond = 0;
+                resource2.Count = 0;
+                resource2.PerSecondUpgrade1Count = 0;
+                resource2.PerSecondUpgrade2Count = 0;
+                resource2.PerSecondUpgrade3Count = 0;
+                resource2.PerClickUpgradeCount = 0;
+                resource2.resource2ToRocket = 0;
+                resource2.resource2Needed = 500000000;
+                resource2.perSecond1 = 5;
+                resource2.perSecond2 = 10;
+                resource2.perSecond3 = 15;
+                resource2.perSecond1UpgradeCost = 350;
+                resource2.perSecond2UpgradeCost = 650;
+                resource2.perSecond3UpgradeCost = 950;
+                resource2.increasePerSecond1UpgradeCount = 0;
+                resource2.increasePerSecond2UpgradeCount = 0;
+                resource2.increasePerSecond3UpgradeCount = 0;
+
+                resource3.PerSecond = 0;
+                resource3.PerClick = 10000000000;
+                resource3.Count = 0;
+                resource3.PerSecondUpgrade1Count = 0;
+                resource3.PerSecondUpgrade2Count = 0;
+                resource3.PerSecondUpgrade3Count = 0;
+                resource3.PerClickUpgradeCount = 0;
+                resource3.resource3ToRocket = 0;
+                resource3.resource3Needed = 1000000;
+                resource3.perSecond1 = 3;
+                resource3.perSecond2 = 6;
+                resource3.perSecond3 = 9;
+                resource3.perSecond1UpgradeCost = 650;
+                resource3.perSecond2UpgradeCost = 1250;
+                resource3.perSecond3UpgradeCost = 1850;
+                resource3.increasePerSecond1UpgradeCount = 0;
+                resource3.increasePerSecond2UpgradeCount = 0;
+                resource3.increasePerSecond3UpgradeCount = 0;
+
+                resource4.PerSecond = 0;
+                resource4.PerClick = 1000000000000;
+                resource4.Count = 0;
+                resource4.PerSecondUpgrade1Count = 0;
+                resource4.PerSecondUpgrade2Count = 0;
+                resource4.PerSecondUpgrade3Count = 0;
+                resource4.PerClickUpgradeCount = 0;
+                resource4.resource4ToRocket = 0;
+                resource4.resource4Needed = 100000;
+                resource4.perSecond1 = 1;
+                resource4.perSecond2 = 2;
+                resource4.perSecond3 = 3;
+                resource4.perSecond1UpgradeCost = 1250;
+                resource4.perSecond2UpgradeCost = 2450;
+                resource4.perSecond3UpgradeCost = 3650;
+                resource4.increasePerSecond1UpgradeCount = 0;
+                resource4.increasePerSecond2UpgradeCount = 0;
+                resource4.increasePerSecond3UpgradeCount = 0;
+            
         }
 
         //timer
@@ -55,6 +146,7 @@ namespace resouceCollector
         {
             UpdateText();
             rocketProgressTracker();
+            ButtonEnable();
         }
 
         private void hideSubMenu()
@@ -88,61 +180,118 @@ namespace resouceCollector
         //update textboxes
         private void UpdateText()
         {
-            ironTextBox.Text = "Iron: " + iron.Count.ToString("F0") + Environment.NewLine + "Iron Per Second: " + iron.PerSecond.ToString("F0");
-            ironPerClickUpgrade.Text = "Iron Per Click x2 \nCost: " + iron.PerClickUpgradeCost.ToString("F0");
-            ironPerSecondUpgrade1.Text = "Iron Miner\n Increases iron by " + iron.perSecond1 + " per second\n\n Cost: " + iron.PerSecondUpgrade1Cost.ToString("F0") + " iron";
-            ironPerSecondUpgrade2.Text = "Iron Drill\n Increases iron by " + iron.perSecond2 + " per second\n\n Cost: " + iron.PerSecondUpgrade2Cost.ToString("F0") + " iron";
-            ironPerSecondUpgrade3.Text = "Iron Escavator\n Increases iron by " + iron.perSecond3 + " per second\n\n Cost: " + iron.PerSecondUpgrade3Cost.ToString("F0") + " iron";
+            //first world content
+            if (worldCounter == 0)
+            {
+                resource1TextBox.Text = "Iron: " + resource1.Count.ToString("F0") + Environment.NewLine + "Iron Per Second: " + resource1.PerSecond.ToString("F0");
+                resource1PerClickUpgrade.Text = "Iron Per Click x2 \nCost: " + resource1.PerClickUpgradeCost.ToString("F0");
+                resource1PerSecondUpgrade1.Text = "Iron Miner\n Increases iron by " + resource1.perSecond1 + " per second\n\n Cost: " + resource1.PerSecondUpgrade1Cost.ToString("F0") + " iron";
+                resource1PerSecondUpgrade2.Text = "Iron Drill\n Increases iron by " + resource1.perSecond2 + " per second\n\n Cost: " + resource1.PerSecondUpgrade2Cost.ToString("F0") + " iron";
+                resource1PerSecondUpgrade3.Text = "Iron Escavator\n Increases iron by " + resource1.perSecond3 + " per second\n\n Cost: " + resource1.PerSecondUpgrade3Cost.ToString("F0") + " iron";
 
 
-            goldTextBox.Text = "Gold: " + gold.Count.ToString("F0") + Environment.NewLine + "Gold Per Second: " + gold.PerSecond.ToString("F0");
-            goldPerClickUpgrade.Text = "Gold Per Click x2 \nCost: " + gold.PerClickUpgradeCost.ToString("F0");
-            goldPerSecondUpgrade1.Text = "Gold Miner\n Increases gold by " + gold.perSecond1 + " per second\n\n Cost: " + gold.PerSecondUpgrade1Cost.ToString("F0") + " gold";
-            goldPerSecondUpgrade2.Text = "Gold Drill\n Increases gold by " + gold.perSecond2 + " per second\n\n Cost: " + gold.PerSecondUpgrade2Cost.ToString("F0") + " gold";
-            goldPerSecondUpgrade3.Text = "Gold Escavator\n Increases gold by " + gold.perSecond3 + " per second\n\n Cost: " + gold.PerSecondUpgrade3Cost.ToString("F0") + " gold";
+                resource2TextBox.Text = "Gold: " + resource2.Count.ToString("F0") + Environment.NewLine + "Gold Per Second: " + resource2.PerSecond.ToString("F0");
+                resource2PerClickUpgrade.Text = "Gold Per Click x2 \nCost: " + resource2.PerClickUpgradeCost.ToString("F0");
+                resource2PerSecondUpgrade1.Text = "Gold Miner\n Increases gold by " + resource2.perSecond1 + " per second\n\n Cost: " + resource2.PerSecondUpgrade1Cost.ToString("F0") + " gold";
+                resource2PerSecondUpgrade2.Text = "Gold Drill\n Increases gold by " + resource2.perSecond2 + " per second\n\n Cost: " + resource2.PerSecondUpgrade2Cost.ToString("F0") + " gold";
+                resource2PerSecondUpgrade3.Text = "Gold Escavator\n Increases gold by " + resource2.perSecond3 + " per second\n\n Cost: " + resource2.PerSecondUpgrade3Cost.ToString("F0") + " gold";
 
-            titaniumTextBox.Text = "Titanium: " + titanium.Count.ToString("F0") + Environment.NewLine + "Titanium Per Second: " + titanium.PerSecond.ToString("F0");
-            titaniumPerClickUpgrade.Text = "Titanium Per Click x2 \nCost: " + titanium.PerClickUpgradeCost.ToString("F0");
-            titaniumPerSecondUpgrade1.Text = "Titanium Miner\n Increases titanium by " + titanium.perSecond1 + " per second\n\n Cost: " + titanium.PerSecondUpgrade1Cost.ToString("F0") + " titanium";
-            titaniumPerSecondUpgrade2.Text = "Titanium Drill\n Increases titanium by " + titanium.perSecond2 + " per second\n\n Cost: " + titanium.PerSecondUpgrade2Cost.ToString("F0") + " titanium";
-            titaniumPerSecondUpgrade3.Text = "Titanium Escavator\n Increases titanium by " + titanium.perSecond3 + " per second\n\n Cost: " + titanium.PerSecondUpgrade3Cost.ToString("F0") + " titanium";
+                resource3TextBox.Text = "Titanium: " + resource3.Count.ToString("F0") + Environment.NewLine + "Titanium Per Second: " + resource3.PerSecond.ToString("F0");
+                resource3PerClickUpgrade.Text = "Titanium Per Click x2 \nCost: " + resource3.PerClickUpgradeCost.ToString("F0");
+                resource3PerSecondUpgrade1.Text = "Titanium Miner\n Increases titanium by " + resource3.perSecond1 + " per second\n\n Cost: " + resource3.PerSecondUpgrade1Cost.ToString("F0") + " titanium";
+                resource3PerSecondUpgrade2.Text = "Titanium Drill\n Increases titanium by " + resource3.perSecond2 + " per second\n\n Cost: " + resource3.PerSecondUpgrade2Cost.ToString("F0") + " titanium";
+                resource3PerSecondUpgrade3.Text = "Titanium Escavator\n Increases titanium by " + resource3.perSecond3 + " per second\n\n Cost: " + resource3.PerSecondUpgrade3Cost.ToString("F0") + " titanium";
 
-            diamondTextBox.Text = "Diamond: " + diamond.Count.ToString("F0") + Environment.NewLine + "Diamond Per Second: " + diamond.PerSecond.ToString("F0");
-            diamondPerClickUpgrade.Text = "Diamond Per Click x2 \nCost: " + diamond.PerClickUpgradeCost.ToString("F0");
-            diamondPerSecondUpgrade1.Text = "Diamond Miner\n Increases diamond by " + diamond.perSecond1 + " per second\n\n Cost: " + diamond.PerSecondUpgrade1Cost.ToString("F0") + " diamond";
-            diamondPerSecondUpgrade2.Text = "Diamond Drill\n Increases diamond by " + diamond.perSecond2 + " per second\n\n Cost: " + diamond.PerSecondUpgrade2Cost.ToString("F0") + " diamond";
-            diamondPerSecondUpgrade3.Text = "Diamond Escavator\n Increases diamond by " + diamond.perSecond3 + " per second\n\n Cost: " + diamond.PerSecondUpgrade3Cost.ToString("F0") + " diamond";
+                resource4TextBox.Text = "Diamond: " + resource4.Count.ToString("F0") + Environment.NewLine + "Diamond Per Second: " + resource4.PerSecond.ToString("F0");
+                resource4PerClickUpgrade.Text = "Diamond Per Click x2 \nCost: " + resource4.PerClickUpgradeCost.ToString("F0");
+                resource4PerSecondUpgrade1.Text = "Diamond Miner\n Increases diamond by " + resource4.perSecond1 + " per second\n\n Cost: " + resource4.PerSecondUpgrade1Cost.ToString("F0") + " diamond";
+                resource4PerSecondUpgrade2.Text = "Diamond Drill\n Increases diamond by " + resource4.perSecond2 + " per second\n\n Cost: " + resource4.PerSecondUpgrade2Cost.ToString("F0") + " diamond";
+                resource4PerSecondUpgrade3.Text = "Diamond Escavator\n Increases diamond by " + resource4.perSecond3 + " per second\n\n Cost: " + resource4.PerSecondUpgrade3Cost.ToString("F0") + " diamond";
 
-            ironToRocket.Text = "send iron to rocket\n" + iron.ironToRocket.ToString("F0") + " total sent\n" + (iron.ironNeeded - iron.ironToRocket).ToString("F0") + " needed!";
-            goldToRocket.Text = "send gold to rocket\n" + gold.goldToRocket.ToString("F0") + " total sent\n" + (gold.goldNeeded - gold.goldToRocket).ToString("F0") + " needed!";
-            titaniumToRocket.Text = "send titanium to rocket\n" + titanium.titaniumToRocket.ToString("F0") + " total sent\n" + (titanium.titaniumNeeded - titanium.titaniumToRocket).ToString("F0") + " needed!";
-            diamondToRocket.Text = "send diamond to rocket\n" + diamond.diamondToRocket.ToString("F0") + " total sent\n" + (diamond.diamondNeeded - diamond.diamondToRocket).ToString("F0") + " needed!";
+                resource1ToRocket.Text = "send iron to rocket\n" + resource1.resource1ToRocket.ToString("F0") + " total sent\n" + (resource1.resource1Needed - resource1.resource1ToRocket).ToString("F0") + " needed!";
+                resource2ToRocket.Text = "send gold to rocket\n" + resource2.resource2ToRocket.ToString("F0") + " total sent\n" + (resource2.resource2Needed - resource2.resource2ToRocket).ToString("F0") + " needed!";
+                resource3ToRocket.Text = "send titanium to rocket\n" + resource3.resource3ToRocket.ToString("F0") + " total sent\n" + (resource3.resource3Needed - resource3.resource3ToRocket).ToString("F0") + " needed!";
+                resource4ToRocket.Text = "send diamond to rocket\n" + resource4.resource4ToRocket.ToString("F0") + " total sent\n" + (resource4.resource4Needed - resource4.resource4ToRocket).ToString("F0") + " needed!";
 
-            ironMinerUpgrade.Text = "iron miner + " + iron.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + iron.perSecond1UpgradeCost.ToString("F0") + " iron";
-            goldMinerUpgrade.Text = "gold miner + " + gold.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + gold.perSecond1UpgradeCost.ToString("F0") + " gold";
-            titaniumMinerUpgrade.Text = "titanium miner + " + titanium.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + titanium.perSecond1UpgradeCost.ToString("F0") + " titanium";
-            diamondMinerUpgrade.Text = "diamond miner + " + diamond.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + diamond.perSecond1UpgradeCost.ToString("F0") + " diamond";
+                resource1MinerUpgrade.Text = "iron miner + " + resource1.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource1.perSecond1UpgradeCost.ToString("F0") + " iron";
+                resource2MinerUpgrade.Text = "gold miner + " + resource2.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource2.perSecond1UpgradeCost.ToString("F0") + " gold";
+                resource3MinerUpgrade.Text = "titanium miner + " + resource3.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource3.perSecond1UpgradeCost.ToString("F0") + " titanium";
+                resource4MinerUpgrade.Text = "diamond miner + " + resource4.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource4.perSecond1UpgradeCost.ToString("F0") + " diamond";
 
-            ironDrillUpgrade.Text = "iron drill + " + iron.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + iron.perSecond2UpgradeCost.ToString("F0") + " iron";
-            goldDrillUpgrade.Text = "gold drill + " + gold.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + gold.perSecond2UpgradeCost.ToString("F0") + " gold";
-            diamondDrillUpgrade.Text = "diamond drill + " + diamond.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + diamond.perSecond2UpgradeCost.ToString("F0") + " diamond";
-            titaniumDrillUpgrade.Text = "titanium drill + " + titanium.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + titanium.perSecond2UpgradeCost.ToString("F0") + " titanium";
+                resource1DrillUpgrade.Text = "iron drill + " + resource1.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource1.perSecond2UpgradeCost.ToString("F0") + " iron";
+                resource2DrillUpgrade.Text = "gold drill + " + resource2.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource2.perSecond2UpgradeCost.ToString("F0") + " gold";
+                resource4DrillUpgrade.Text = "diamond drill + " + resource4.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource4.perSecond2UpgradeCost.ToString("F0") + " diamond";
+                resource3DrillUpgrade.Text = "titanium drill + " + resource3.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource3.perSecond2UpgradeCost.ToString("F0") + " titanium";
 
-            ironEscUpgrade.Text = "iron esc + " + iron.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + iron.perSecond3UpgradeCost.ToString("F0") + " iron";
-            goldEscUpgrade.Text = "gold esc + " + gold.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + gold.perSecond3UpgradeCost.ToString("F0") + " gold";
-            titaniumEscUpgrade.Text = "titanium esc + " + titanium.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + titanium.perSecond3UpgradeCost.ToString("F0") + " titanium";
-            diamondEscUpgrade.Text = "diamond esc + " + diamond.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + diamond.perSecond3UpgradeCost.ToString("F0") + " diamond";
+                resource1EscUpgrade.Text = "iron esc + " + resource1.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource1.perSecond3UpgradeCost.ToString("F0") + " iron";
+                resource2EscUpgrade.Text = "gold esc + " + resource2.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource2.perSecond3UpgradeCost.ToString("F0") + " gold";
+                resource3EscUpgrade.Text = "titanium esc + " + resource3.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource3.perSecond3UpgradeCost.ToString("F0") + " titanium";
+                resource4EscUpgrade.Text = "diamond esc + " + resource4.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource4.perSecond3UpgradeCost.ToString("F0") + " diamond";
+            }
 
+
+
+            // second world content
+            if(worldCounter == 1)
+            {
+                resource1TextBox.Text = "Uranium: " + resource1.Count.ToString("F0") + Environment.NewLine + "Uranium Per Second: " + resource1.PerSecond.ToString("F0");
+                resource1PerClickUpgrade.Text = "Uranium Per Click x2 \nCost: " + resource1.PerClickUpgradeCost.ToString("F0");
+                resource1PerSecondUpgrade1.Text = "Uranium Miner\n Increases Uranium by " + resource1.perSecond1 + " per second\n\n Cost: " + resource1.PerSecondUpgrade1Cost.ToString("F0") + " Uranium";
+                resource1PerSecondUpgrade2.Text = "Uranium Drill\n Increases Uranium by " + resource1.perSecond2 + " per second\n\n Cost: " + resource1.PerSecondUpgrade2Cost.ToString("F0") + " Uranium";
+                resource1PerSecondUpgrade3.Text = "Uranium Escavator\n Increases Uranium by " + resource1.perSecond3 + " per second\n\n Cost: " + resource1.PerSecondUpgrade3Cost.ToString("F0") + " Uranium";
+
+
+                resource2TextBox.Text = "Plutonium: " + resource2.Count.ToString("F0") + Environment.NewLine + "Plutonium Per Second: " + resource2.PerSecond.ToString("F0");
+                resource2PerClickUpgrade.Text = "Plutonium Per Click x2 \nCost: " + resource2.PerClickUpgradeCost.ToString("F0");
+                resource2PerSecondUpgrade1.Text = "Plutonium Miner\n Increases Plutonium by " + resource2.perSecond1 + " per second\n\n Cost: " + resource2.PerSecondUpgrade1Cost.ToString("F0") + " Plutonium";
+                resource2PerSecondUpgrade2.Text = "Plutonium Drill\n Increases Plutonium by " + resource2.perSecond2 + " per second\n\n Cost: " + resource2.PerSecondUpgrade2Cost.ToString("F0") + " Plutonium";
+                resource2PerSecondUpgrade3.Text = "Plutonium Escavator\n Increases Plutonium by " + resource2.perSecond3 + " per second\n\n Cost: " + resource2.PerSecondUpgrade3Cost.ToString("F0") + " Plutonium";
+
+                resource3TextBox.Text = "Tin: " + resource3.Count.ToString("F0") + Environment.NewLine + "Tin Per Second: " + resource3.PerSecond.ToString("F0");
+                resource3PerClickUpgrade.Text = "Tin Per Click x2 \nCost: " + resource3.PerClickUpgradeCost.ToString("F0");
+                resource3PerSecondUpgrade1.Text = "Tin Miner\n Increases Tin by " + resource3.perSecond1 + " per second\n\n Cost: " + resource3.PerSecondUpgrade1Cost.ToString("F0") + " Tin";
+                resource3PerSecondUpgrade2.Text = "Tin Drill\n Increases Tin by " + resource3.perSecond2 + " per second\n\n Cost: " + resource3.PerSecondUpgrade2Cost.ToString("F0") + " Tin";
+                resource3PerSecondUpgrade3.Text = "Tin Escavator\n Increases Tin by " + resource3.perSecond3 + " per second\n\n Cost: " + resource3.PerSecondUpgrade3Cost.ToString("F0") + " Tin";
+
+                resource4TextBox.Text = "Silicon: " + resource4.Count.ToString("F0") + Environment.NewLine + "Silicon Per Second: " + resource4.PerSecond.ToString("F0");
+                resource4PerClickUpgrade.Text = "Silicon Per Click x2 \nCost: " + resource4.PerClickUpgradeCost.ToString("F0");
+                resource4PerSecondUpgrade1.Text = "Silicon Miner\n Increases Silicon by " + resource4.perSecond1 + " per second\n\n Cost: " + resource4.PerSecondUpgrade1Cost.ToString("F0") + " Silicon";
+                resource4PerSecondUpgrade2.Text = "Silicon Drill\n Increases Silicon by " + resource4.perSecond2 + " per second\n\n Cost: " + resource4.PerSecondUpgrade2Cost.ToString("F0") + " Silicon";
+                resource4PerSecondUpgrade3.Text = "Silicon Escavator\n Increases Silicon by " + resource4.perSecond3 + " per second\n\n Cost: " + resource4.PerSecondUpgrade3Cost.ToString("F0") + " Silicon";
+
+                resource1ToRocket.Text = "send Uranium to rocket\n" + resource1.resource1ToRocket.ToString("F0") + " total sent\n" + (resource1.resource1Needed - resource1.resource1ToRocket).ToString("F0") + " needed!";
+                resource2ToRocket.Text = "send Plutonium to rocket\n" + resource2.resource2ToRocket.ToString("F0") + " total sent\n" + (resource2.resource2Needed - resource2.resource2ToRocket).ToString("F0") + " needed!";
+                resource3ToRocket.Text = "send Tin to rocket\n" + resource3.resource3ToRocket.ToString("F0") + " total sent\n" + (resource3.resource3Needed - resource3.resource3ToRocket).ToString("F0") + " needed!";
+                resource4ToRocket.Text = "send Silicon to rocket\n" + resource4.resource4ToRocket.ToString("F0") + " total sent\n" + (resource4.resource4Needed - resource4.resource4ToRocket).ToString("F0") + " needed!";
+
+                resource1MinerUpgrade.Text = "Uranium miner + " + resource1.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource1.perSecond1UpgradeCost.ToString("F0") + " Uranium";
+                resource2MinerUpgrade.Text = "Plutonium miner + " + resource2.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource2.perSecond1UpgradeCost.ToString("F0") + " Plutonium";
+                resource3MinerUpgrade.Text = "Tin miner + " + resource3.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource3.perSecond1UpgradeCost.ToString("F0") + " Tin";
+                resource4MinerUpgrade.Text = "Silicon miner + " + resource4.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource4.perSecond1UpgradeCost.ToString("F0") + " Silicon";
+
+                resource1DrillUpgrade.Text = "Uranium drill + " + resource1.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource1.perSecond2UpgradeCost.ToString("F0") + " Uranium";
+                resource2DrillUpgrade.Text = "Plutonium drill + " + resource2.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource2.perSecond2UpgradeCost.ToString("F0") + " gold";
+                resource4DrillUpgrade.Text = "Silicon drill + " + resource4.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource4.perSecond2UpgradeCost.ToString("F0") + " Silicon";
+                resource3DrillUpgrade.Text = "Tin drill + " + resource3.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource3.perSecond2UpgradeCost.ToString("F0") + " Tin";
+
+                resource1EscUpgrade.Text = "Uranium esc + " + resource1.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource1.perSecond3UpgradeCost.ToString("F0") + " Uranium";
+                resource2EscUpgrade.Text = "Plutonium esc + " + resource2.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource2.perSecond3UpgradeCost.ToString("F0") + " Plutonium";
+                resource3EscUpgrade.Text = "Tin esc + " + resource3.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource3.perSecond3UpgradeCost.ToString("F0") + " Tin";
+                resource4EscUpgrade.Text = "Silicon esc + " + resource4.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource4.perSecond3UpgradeCost.ToString("F0") + " Silicon";
+
+                tokenUpgrades.Text = "Upgrades\nTokens aquired: " + upgradeTokens;
+            
+            }
 
         }
 
         // main button
         private void resourceButton_Click(object sender, EventArgs e)
         {
-            iron.Count += iron.PerClick;
-            gold.Count += gold.PerClick;
-            titanium.Count += titanium.PerClick;
-            diamond.Count += diamond.PerClick;
+            resource1.Count += resource1.PerClick;
+            resource2.Count += resource2.PerClick;
+            resource3.Count += resource3.PerClick;
+            resource4.Count += resource4.PerClick;
 
             UpdateText();
 
@@ -152,119 +301,119 @@ namespace resouceCollector
         // per click upgrades
         private void ironPerClickUpgrade_Click(object sender, EventArgs e)
         {
-            iron.IncreasePerClick();
+            resource1.IncreasePerClick();
         }
 
         private void goldPerClickUpgrade_Click(object sender, EventArgs e)
         {
-            gold.IncreasePerClick();
+            resource2.IncreasePerClick();
 
         }
 
         private void titaniumPerClickUpgrade_Click(object sender, EventArgs e)
         {
-            titanium.IncreasePerClick();
+            resource3.IncreasePerClick();
         }
 
         private void diamondPerClickUpgrade_Click(object sender, EventArgs e)
         {
-            diamond.IncreasePerClick();
+            resource4.IncreasePerClick();
         }
 
 
         // per second upgrades
         private void perSecondResource_Tick(object sender, EventArgs e)
         {
-            iron.Count += iron.PerSecond;
-            gold.Count += gold.PerSecond;
-            titanium.Count += titanium.PerSecond;
-            diamond.Count += diamond.PerSecond;
+            resource1.Count += resource1.PerSecond;
+            resource2.Count += resource2.PerSecond;
+            resource3.Count += resource3.PerSecond;
+            resource4.Count += resource4.PerSecond;
         }
         //iron
         private void ironPerSecondUpgrade1_Click(object sender, EventArgs e)
         {
-            iron.IncreasePerSecond1();
+            resource1.IncreasePerSecond1();
         }
         private void ironPerSecondUpgrade2_Click(object sender, EventArgs e)
         {
-            iron.IncreasePerSecond2();
+            resource1.IncreasePerSecond2();
         }
 
         private void ironPerSecondUpgrade3_Click(object sender, EventArgs e)
         {
-            iron.IncreasePerSecond3();
+            resource1.IncreasePerSecond3();
         }
 
         //gold
         private void goldPerSecondUpgrade1_Click(object sender, EventArgs e)
         {
-            gold.IncreasePerSecond1();
+            resource2.IncreasePerSecond1();
         }
         private void goldPerSecondUpgrade2_Click(object sender, EventArgs e)
         {
-            gold.IncreasePerSecond2();
+            resource2.IncreasePerSecond2();
         }
 
         private void goldPerSecondUpgrade3_Click(object sender, EventArgs e)
         {
-            gold.IncreasePerSecond3();
+            resource2.IncreasePerSecond3();
         }
         // titanium
         private void titaniumPerSecondUpgrade1_Click(object sender, EventArgs e)
         {
-            titanium.IncreasePerSecond1();
+            resource3.IncreasePerSecond1();
         }
 
         private void titaniumPerSecondUpgrade2_Click(object sender, EventArgs e)
         {
-            titanium.IncreasePerSecond2();
+            resource3.IncreasePerSecond2();
         }
 
         private void titaniumPerSecondUpgrade3_Click(object sender, EventArgs e)
         {
-            titanium.IncreasePerSecond3();
+            resource3.IncreasePerSecond3();
         }
         //diamond
         private void diamondPerSecondUpgrade1_Click(object sender, EventArgs e)
         {
-            diamond.IncreasePerSecond1();
+            resource4.IncreasePerSecond1();
         }
 
         private void diamondPerSecondUpgrade2_Click(object sender, EventArgs e)
         {
-            diamond.IncreasePerSecond2();
+            resource4.IncreasePerSecond2();
         }
 
         private void diamondPerSecondUpgrade3_Click(object sender, EventArgs e)
         {
-            diamond.IncreasePerSecond3();
+            resource4.IncreasePerSecond3();
         }
 
         private void ironTextBox_TextChanged(object sender, EventArgs e)
         {
-            ironTextBox.Multiline = true;
+            resource1TextBox.Multiline = true;
         }
 
 
         //send resources to the rocket
         private void titaniumToRocket_Click(object sender, EventArgs e)
         {
-            titanium.ContributeToRocket();
+            resource3.ContributeToRocket();
         }
 
         private void ironToRocket_Click(object sender, EventArgs e)
         {
-            iron.ContributeToRocket();
+            resource1.ContributeToRocket();
         }
 
         private void goldToRocket_Click(object sender, EventArgs e)
         {
-            gold.ContributeToRocket();
+            resource2.ContributeToRocket();
         }
 
         private void diamondToRocket_Click(object sender, EventArgs e)
         {
-            diamond.ContributeToRocket();
+            resource4.ContributeToRocket();
         }
 
         private void rocketProgressBar_Click(object sender, EventArgs e)
@@ -279,22 +428,22 @@ namespace resouceCollector
 
         private void ironMinerUpgrade_Click(object sender, EventArgs e)
         {
-            iron.IncreasePerSecond1Upgrade();
+            resource1.IncreasePerSecond1Upgrade();
         }
 
         private void goldMinerUpgrade_Click(object sender, EventArgs e)
         {
-            gold.IncreasePerSecond1Upgrade();
+            resource2.IncreasePerSecond1Upgrade();
         }
 
         private void titaniumMinerUpgrade_Click(object sender, EventArgs e)
         {
-            titanium.IncreasePerSecond1Upgrade();
+            resource3.IncreasePerSecond1Upgrade();
         }
 
         private void diamondMinerUpgrade_Click(object sender, EventArgs e)
         {
-            diamond.IncreasePerSecond1Upgrade();
+            resource4.IncreasePerSecond1Upgrade();
         }
 
         private void showDrillUpgrades_Click(object sender, EventArgs e)
@@ -309,47 +458,67 @@ namespace resouceCollector
 
         private void ironDrillUpgrade_Click(object sender, EventArgs e)
         {
-            iron.IncreasePerSecond2Upgrade();
+            resource1.IncreasePerSecond2Upgrade();
         }
 
         private void goldDrillUpgrade_Click(object sender, EventArgs e)
         {
-            gold.IncreasePerSecond2Upgrade();
+            resource2.IncreasePerSecond2Upgrade();
         }
 
         private void titaniumDrillUpgrade_Click(object sender, EventArgs e)
         {
-            titanium.IncreasePerSecond2Upgrade();
+            resource3.IncreasePerSecond2Upgrade();
         }
 
         private void diamondDrillUpgrade_Click(object sender, EventArgs e)
         {
-            diamond.IncreasePerSecond2Upgrade();
+            resource4.IncreasePerSecond2Upgrade();
         }
 
         private void ironEscUpgrade_Click(object sender, EventArgs e)
         {
-            iron.IncreasePerSecond3Upgrade();
+            resource1.IncreasePerSecond3Upgrade();
         }
 
         private void goldEscUpgrade_Click(object sender, EventArgs e)
         {
-            gold.IncreasePerSecond3Upgrade();
+            resource2.IncreasePerSecond3Upgrade();
         }
 
         private void titaniumEscUpgrade_Click(object sender, EventArgs e)
         {
-            titanium.IncreasePerSecond3Upgrade();
+            resource3.IncreasePerSecond3Upgrade();
         }
 
         private void diamondEscUpgrade_Click(object sender, EventArgs e)
         {
-            diamond.IncreasePerSecond3Upgrade();
+            resource4.IncreasePerSecond3Upgrade();
         }
 
         private void saveGameButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void launchButton_Click(object sender, EventArgs e)
+        {
+            worldCounter++;
+            upgradeTokens += worldCounter;
+            launchButton.Enabled = false;
+            launchButton.Visible = false;
+            resourceButton.Enabled = true;
+            resource1ToRocket.Enabled = true;
+            resource2ToRocket.Enabled = true;
+            resource3ToRocket.Enabled = true;
+            resource4ToRocket.Enabled = true;
+            NewWorld();
+
+        }
+
+        private void tokenUpgrades_Click(object sender, EventArgs e)
+        {
+            showSubMenu(tokenUpgradesMenu);
         }
     }
 }

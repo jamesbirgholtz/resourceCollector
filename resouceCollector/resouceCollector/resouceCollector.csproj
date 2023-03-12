@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Diamond.cs" />
+    <Compile Include="Resource4.cs" />
     <Compile Include="SaveManager.cs" />
-    <Compile Include="Titanium.cs" />
-    <Compile Include="Gold.cs" />
-    <Compile Include="Iron.cs" />
+    <Compile Include="Resource3.cs" />
+    <Compile Include="Resource2.cs" />
+    <Compile Include="Resource1.cs" />
     <Compile Include="gameForm.cs">
       <SubType>Form</SubType>
     </Compile>
