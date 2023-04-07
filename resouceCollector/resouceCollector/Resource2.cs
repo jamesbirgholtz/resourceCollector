@@ -1,4 +1,4 @@
-﻿namespace resouceCollector
+﻿namespace resourceCollectorApp
 {
     internal class Resource2
     {

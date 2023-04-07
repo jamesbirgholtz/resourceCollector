@@ -1,4 +1,5 @@
-﻿using System;
+﻿using resourceCollectorApp;
+using System;
 using System.Windows.Forms;
 
 namespace resouceCollector
@@ -14,10 +15,8 @@ namespace resouceCollector
         private readonly Resource2 resource2;
         private readonly Resource3 resource3;
         private readonly Resource4 resource4;
+        private readonly UpgradeTree upgradeTree;
         private int worldCounter = 0;
-        private int upgradeTokens = 0;
-
-
 
         public gameForm()
         {
@@ -26,23 +25,26 @@ namespace resouceCollector
             resource2 = new Resource2(100000000, 0, 0, 200, 300, 600, 900);
             resource3 = new Resource3(100000000, 0, 0, 400, 600, 1200, 1800);
             resource4 = new Resource4(100000000, 0, 0, 800, 1200, 2400, 3600);
+            upgradeTree = new UpgradeTree(0, 0, 0, 0, 0, 0);
+
 
             UpdateText();
             perSecondResource.Start();
             textUpdater.Start();
         }
 
-
+        // keeps track of the resources needed to build the rocket and then sends it to the progress bar
         private void rocketProgressTracker()
         {
+            //total to the resources needed
             double rocketResourcesNeeded = resource1.resource1Needed + resource2.resource2Needed + resource3.resource3Needed + resource4.resource4Needed;
+            //total of the resources collected
             double rocketResourcesCollected = resource1.resource1ToRocket + resource2.resource2ToRocket + resource3.resource3ToRocket + resource4.resource4ToRocket;
-
-            if (rocketResourcesNeeded > 0)
-            {
-                double rocketProgress = rocketResourcesCollected / rocketResourcesNeeded * 100;
-                rocketProgressBar.Value = (int)rocketProgress;
-            }
+            //creates a percentage of the resources needed so the progress bar van take the value
+            double rocketProgress = rocketResourcesCollected / rocketResourcesNeeded * 100;
+            rocketProgressBar.Value = (int)rocketProgress;
+            
+            //once the progress bar is 100 turn off the buttons and show the launch button
             if (rocketProgressBar.Value == 100)
             {
                 resource1ToRocket.Enabled = false;
@@ -54,14 +56,24 @@ namespace resouceCollector
                 launchButton.Enabled = true;
             }
         }
-
+        // check to see if the button should be enabled/ visable
         private void ButtonEnable() {
             if (worldCounter != 0) { 
                 tokenUpgrades.Enabled = true;
                 tokenUpgrades.Visible = true;
             }
-        }
 
+            if (upgradeTree.UpgradeTokens == 0)
+            {
+                tokenUpgradesMenu.Enabled = false;
+            }
+            else {
+                tokenUpgradesMenu.Enabled= true;
+            }
+
+
+        }
+        //method to call when the launch button is clicked, resetting the values to the default
         private void NewWorld() {
                 resource1.PerSecond = 0;
                 resource1.Count = 0;
@@ -141,14 +153,22 @@ namespace resouceCollector
             
         }
 
-        //timer
+        //timer to keep updating everything to make sure the correct text is on the screen
         private void textUpdater_Tick(object sender, EventArgs e)
         {
             UpdateText();
             rocketProgressTracker();
             ButtonEnable();
         }
-
+        //timer that keeps track of the resources per second
+        private void perSecondResource_Tick(object sender, EventArgs e)
+        {
+            resource1.Count += resource1.PerSecond;
+            resource2.Count += resource2.PerSecond;
+            resource3.Count += resource3.PerSecond;
+            resource4.Count += resource4.PerSecond;
+        }
+        //method to hide the upgrade trees
         private void hideSubMenu()
         {
             if (minerUpgrades.Visible == true)
@@ -165,6 +185,7 @@ namespace resouceCollector
             }
 
         }
+        //method to show the upgrade trees
         private void showSubMenu(Panel subMenu)
         {
             if (subMenu.Visible == false)
@@ -177,7 +198,28 @@ namespace resouceCollector
                 subMenu.Visible = false;
             }
         }
-        //update textboxes
+        // the upgrade tree for the tokens
+        private void tokenUpgrades_Click(object sender, EventArgs e)
+        {
+            showSubMenu(tokenUpgradesMenu);
+        }
+        // upgrade tree for the miners
+        private void showMinerUpgrades_Click(object sender, EventArgs e)
+        {
+            showSubMenu(minerUpgrades);
+        }
+        //upgrade tree for the drill
+        private void showDrillUpgrades_Click(object sender, EventArgs e)
+        {
+            showSubMenu(drillUpgrades);
+        }
+        //upgrade tree for the escavators
+        private void showEscUpgrades_Click(object sender, EventArgs e)
+        {
+            showSubMenu(excavatorUpgrades);
+        }
+
+        //update textboxes for the different worlds
         private void UpdateText()
         {
             //first world content
@@ -279,7 +321,7 @@ namespace resouceCollector
                 resource3EscUpgrade.Text = "Tin esc + " + resource3.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource3.perSecond3UpgradeCost.ToString("F0") + " Tin";
                 resource4EscUpgrade.Text = "Silicon esc + " + resource4.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource4.perSecond3UpgradeCost.ToString("F0") + " Silicon";
 
-                tokenUpgrades.Text = "Upgrades\nTokens aquired: " + upgradeTokens;
+                tokenUpgrades.Text = "Upgrades\nTokens aquired: " + upgradeTree.UpgradeTokens;
             
             }
 
@@ -296,215 +338,16 @@ namespace resouceCollector
             UpdateText();
 
         }
-
-
-        // per click upgrades
-        private void ironPerClickUpgrade_Click(object sender, EventArgs e)
-        {
-            resource1.IncreasePerClick();
-        }
-
-        private void goldPerClickUpgrade_Click(object sender, EventArgs e)
-        {
-            resource2.IncreasePerClick();
-
-        }
-
-        private void titaniumPerClickUpgrade_Click(object sender, EventArgs e)
-        {
-            resource3.IncreasePerClick();
-        }
-
-        private void diamondPerClickUpgrade_Click(object sender, EventArgs e)
-        {
-            resource4.IncreasePerClick();
-        }
-
-
-        // per second upgrades
-        private void perSecondResource_Tick(object sender, EventArgs e)
-        {
-            resource1.Count += resource1.PerSecond;
-            resource2.Count += resource2.PerSecond;
-            resource3.Count += resource3.PerSecond;
-            resource4.Count += resource4.PerSecond;
-        }
-        //iron
-        private void ironPerSecondUpgrade1_Click(object sender, EventArgs e)
-        {
-            resource1.IncreasePerSecond1();
-        }
-        private void ironPerSecondUpgrade2_Click(object sender, EventArgs e)
-        {
-            resource1.IncreasePerSecond2();
-        }
-
-        private void ironPerSecondUpgrade3_Click(object sender, EventArgs e)
-        {
-            resource1.IncreasePerSecond3();
-        }
-
-        //gold
-        private void goldPerSecondUpgrade1_Click(object sender, EventArgs e)
-        {
-            resource2.IncreasePerSecond1();
-        }
-        private void goldPerSecondUpgrade2_Click(object sender, EventArgs e)
-        {
-            resource2.IncreasePerSecond2();
-        }
-
-        private void goldPerSecondUpgrade3_Click(object sender, EventArgs e)
-        {
-            resource2.IncreasePerSecond3();
-        }
-        // titanium
-        private void titaniumPerSecondUpgrade1_Click(object sender, EventArgs e)
-        {
-            resource3.IncreasePerSecond1();
-        }
-
-        private void titaniumPerSecondUpgrade2_Click(object sender, EventArgs e)
-        {
-            resource3.IncreasePerSecond2();
-        }
-
-        private void titaniumPerSecondUpgrade3_Click(object sender, EventArgs e)
-        {
-            resource3.IncreasePerSecond3();
-        }
-        //diamond
-        private void diamondPerSecondUpgrade1_Click(object sender, EventArgs e)
-        {
-            resource4.IncreasePerSecond1();
-        }
-
-        private void diamondPerSecondUpgrade2_Click(object sender, EventArgs e)
-        {
-            resource4.IncreasePerSecond2();
-        }
-
-        private void diamondPerSecondUpgrade3_Click(object sender, EventArgs e)
-        {
-            resource4.IncreasePerSecond3();
-        }
-
-        private void ironTextBox_TextChanged(object sender, EventArgs e)
-        {
-            resource1TextBox.Multiline = true;
-        }
-
-
-        //send resources to the rocket
-        private void titaniumToRocket_Click(object sender, EventArgs e)
-        {
-            resource3.ContributeToRocket();
-        }
-
-        private void ironToRocket_Click(object sender, EventArgs e)
-        {
-            resource1.ContributeToRocket();
-        }
-
-        private void goldToRocket_Click(object sender, EventArgs e)
-        {
-            resource2.ContributeToRocket();
-        }
-
-        private void diamondToRocket_Click(object sender, EventArgs e)
-        {
-            resource4.ContributeToRocket();
-        }
-
-        private void rocketProgressBar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void showMinerUpgrades_Click(object sender, EventArgs e)
-        {
-            showSubMenu(minerUpgrades);
-        }
-
-        private void ironMinerUpgrade_Click(object sender, EventArgs e)
-        {
-            resource1.IncreasePerSecond1Upgrade();
-        }
-
-        private void goldMinerUpgrade_Click(object sender, EventArgs e)
-        {
-            resource2.IncreasePerSecond1Upgrade();
-        }
-
-        private void titaniumMinerUpgrade_Click(object sender, EventArgs e)
-        {
-            resource3.IncreasePerSecond1Upgrade();
-        }
-
-        private void diamondMinerUpgrade_Click(object sender, EventArgs e)
-        {
-            resource4.IncreasePerSecond1Upgrade();
-        }
-
-        private void showDrillUpgrades_Click(object sender, EventArgs e)
-        {
-            showSubMenu(drillUpgrades);
-        }
-
-        private void showEscUpgrades_Click(object sender, EventArgs e)
-        {
-            showSubMenu(excavatorUpgrades);
-        }
-
-        private void ironDrillUpgrade_Click(object sender, EventArgs e)
-        {
-            resource1.IncreasePerSecond2Upgrade();
-        }
-
-        private void goldDrillUpgrade_Click(object sender, EventArgs e)
-        {
-            resource2.IncreasePerSecond2Upgrade();
-        }
-
-        private void titaniumDrillUpgrade_Click(object sender, EventArgs e)
-        {
-            resource3.IncreasePerSecond2Upgrade();
-        }
-
-        private void diamondDrillUpgrade_Click(object sender, EventArgs e)
-        {
-            resource4.IncreasePerSecond2Upgrade();
-        }
-
-        private void ironEscUpgrade_Click(object sender, EventArgs e)
-        {
-            resource1.IncreasePerSecond3Upgrade();
-        }
-
-        private void goldEscUpgrade_Click(object sender, EventArgs e)
-        {
-            resource2.IncreasePerSecond3Upgrade();
-        }
-
-        private void titaniumEscUpgrade_Click(object sender, EventArgs e)
-        {
-            resource3.IncreasePerSecond3Upgrade();
-        }
-
-        private void diamondEscUpgrade_Click(object sender, EventArgs e)
-        {
-            resource4.IncreasePerSecond3Upgrade();
-        }
-
+        // save button
         private void saveGameButton_Click(object sender, EventArgs e)
         {
 
         }
-
+        //launch button once youve gotten enough resources
         private void launchButton_Click(object sender, EventArgs e)
         {
             worldCounter++;
-            upgradeTokens += worldCounter;
+            upgradeTree.UpgradeTokens += worldCounter;
             launchButton.Enabled = false;
             launchButton.Visible = false;
             resourceButton.Enabled = true;
@@ -515,10 +358,168 @@ namespace resouceCollector
             NewWorld();
 
         }
-
-        private void tokenUpgrades_Click(object sender, EventArgs e)
+        // per click upgrades
+        private void ironPerClickUpgrade_Click(object sender, EventArgs e)
         {
-            showSubMenu(tokenUpgradesMenu);
+            resource1.IncreasePerClick();
+        }
+        private void goldPerClickUpgrade_Click(object sender, EventArgs e)
+        {
+            resource2.IncreasePerClick();
+
+        }
+        private void titaniumPerClickUpgrade_Click(object sender, EventArgs e)
+        {
+            resource3.IncreasePerClick();
+        }
+        private void diamondPerClickUpgrade_Click(object sender, EventArgs e)
+        {
+            resource4.IncreasePerClick();
+        }
+        //resource 1 per second upgrades
+        private void ironPerSecondUpgrade1_Click(object sender, EventArgs e)
+        {
+            resource1.IncreasePerSecond1();
+        }
+        private void ironPerSecondUpgrade2_Click(object sender, EventArgs e)
+        {
+            resource1.IncreasePerSecond2();
+        }
+        private void ironPerSecondUpgrade3_Click(object sender, EventArgs e)
+        {
+            resource1.IncreasePerSecond3();
+        }
+        //resource 2 per second upgrades 
+        private void goldPerSecondUpgrade1_Click(object sender, EventArgs e)
+        {
+            resource2.IncreasePerSecond1();
+        }
+        private void goldPerSecondUpgrade2_Click(object sender, EventArgs e)
+        {
+            resource2.IncreasePerSecond2();
+        }
+        private void goldPerSecondUpgrade3_Click(object sender, EventArgs e)
+        {
+            resource2.IncreasePerSecond3();
+        }
+        //resource 3 per second upgrades 
+        private void titaniumPerSecondUpgrade1_Click(object sender, EventArgs e)
+        {
+            resource3.IncreasePerSecond1();
+        }
+        private void titaniumPerSecondUpgrade2_Click(object sender, EventArgs e)
+        {
+            resource3.IncreasePerSecond2();
+        }
+        private void titaniumPerSecondUpgrade3_Click(object sender, EventArgs e)
+        {
+            resource3.IncreasePerSecond3();
+        }
+        //resource 4 per second upgrades
+        private void diamondPerSecondUpgrade1_Click(object sender, EventArgs e)
+        {
+            resource4.IncreasePerSecond1();
+        }
+        private void diamondPerSecondUpgrade2_Click(object sender, EventArgs e)
+        {
+            resource4.IncreasePerSecond2();
+        }
+        private void diamondPerSecondUpgrade3_Click(object sender, EventArgs e)
+        {
+            resource4.IncreasePerSecond3();
+        }
+        //send resources to the rocket
+        private void titaniumToRocket_Click(object sender, EventArgs e)
+        {
+            resource3.ContributeToRocket();
+        }
+        private void ironToRocket_Click(object sender, EventArgs e)
+        {
+            resource1.ContributeToRocket();
+        }
+        private void goldToRocket_Click(object sender, EventArgs e)
+        {
+            resource2.ContributeToRocket();
+        }
+        private void diamondToRocket_Click(object sender, EventArgs e)
+        {
+            resource4.ContributeToRocket();
+        }
+        // miner upgrade tree buttons
+        private void ironMinerUpgrade_Click(object sender, EventArgs e)
+        {
+            resource1.IncreasePerSecond1Upgrade();
+        }
+        private void goldMinerUpgrade_Click(object sender, EventArgs e)
+        {
+            resource2.IncreasePerSecond1Upgrade();
+        }
+        private void titaniumMinerUpgrade_Click(object sender, EventArgs e)
+        {
+            resource3.IncreasePerSecond1Upgrade();
+        }
+        private void diamondMinerUpgrade_Click(object sender, EventArgs e)
+        {
+            resource4.IncreasePerSecond1Upgrade();
+        }
+        // drill upgrade tree buttons
+        private void ironDrillUpgrade_Click(object sender, EventArgs e)
+        {
+            resource1.IncreasePerSecond2Upgrade();
+        }
+        private void goldDrillUpgrade_Click(object sender, EventArgs e)
+        {
+            resource2.IncreasePerSecond2Upgrade();
+        }
+        private void titaniumDrillUpgrade_Click(object sender, EventArgs e)
+        {
+            resource3.IncreasePerSecond2Upgrade();
+        }
+        private void diamondDrillUpgrade_Click(object sender, EventArgs e)
+        {
+            resource4.IncreasePerSecond2Upgrade();
+        }
+        //escavator upgrade tree buttons
+        private void ironEscUpgrade_Click(object sender, EventArgs e)
+        {
+            resource1.IncreasePerSecond3Upgrade();
+        }
+        private void goldEscUpgrade_Click(object sender, EventArgs e)
+        {
+            resource2.IncreasePerSecond3Upgrade();
+        }
+        private void titaniumEscUpgrade_Click(object sender, EventArgs e)
+        {
+            resource3.IncreasePerSecond3Upgrade();
+        }
+        private void diamondEscUpgrade_Click(object sender, EventArgs e)
+        {
+            resource4.IncreasePerSecond3Upgrade();
+        }
+        //token upgrade tree buttons
+        private void clickUpgradeCostDecrease_Click(object sender, EventArgs e)
+        {
+            upgradeTree.ClickCostDecrease();
+            if (upgradeTree.ClickUpgradeDecreaseCounter == 0)
+            {
+                resource1.PerClickUpgradeCost /= 2;
+            }
+            else if (upgradeTree.ClickUpgradeDecreaseCounter == 1) {
+                resource2.PerClickUpgradeCost /= 2;
+            }
+            else if (upgradeTree.ClickUpgradeDecreaseCounter == 2)
+            {
+                resource3.PerClickUpgradeCost /= 2;
+            }
+            else if (upgradeTree.ClickUpgradeDecreaseCounter == 3)
+            {
+                resource4.PerClickUpgradeCost /= 2;
+            }
+        }
+
+        private void rocketProgressBar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

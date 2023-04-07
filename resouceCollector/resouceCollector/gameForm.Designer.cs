@@ -80,10 +80,28 @@
             this.launchButton = new System.Windows.Forms.Button();
             this.loadGameButton = new System.Windows.Forms.Button();
             this.tokenUpgrades = new System.Windows.Forms.Button();
-            this.tokenUpgradesMenu = new System.Windows.Forms.FlowLayoutPanel();
+            this.tokenUpgradesMenu = new System.Windows.Forms.Panel();
+            this.drillResource4Decrease = new System.Windows.Forms.Button();
+            this.drillResource3Decrease = new System.Windows.Forms.Button();
+            this.minerResource4Decrease = new System.Windows.Forms.Button();
+            this.minerResource3Decrease = new System.Windows.Forms.Button();
+            this.escResource4Decrease = new System.Windows.Forms.Button();
+            this.escResource3Decrease = new System.Windows.Forms.Button();
+            this.rocketResource3Decrese = new System.Windows.Forms.Button();
+            this.rocketResource4Decrese = new System.Windows.Forms.Button();
+            this.escResource2Decrease = new System.Windows.Forms.Button();
+            this.drillResource2Decrease = new System.Windows.Forms.Button();
+            this.drillResource1Decrease = new System.Windows.Forms.Button();
+            this.minerResource2Decrease = new System.Windows.Forms.Button();
+            this.rocketResource2Decrese = new System.Windows.Forms.Button();
+            this.escResource1Decrease = new System.Windows.Forms.Button();
+            this.minerResource1Decrease = new System.Windows.Forms.Button();
+            this.rocketResource1Decrese = new System.Windows.Forms.Button();
+            this.clickUpgradeCostDecrease = new System.Windows.Forms.Button();
             this.minerUpgrades.SuspendLayout();
             this.drillUpgrades.SuspendLayout();
             this.excavatorUpgrades.SuspendLayout();
+            this.tokenUpgradesMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // resourceButton
@@ -349,7 +367,6 @@
             this.resource1TextBox.TabIndex = 28;
             this.resource1TextBox.TabStop = false;
             this.resource1TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.resource1TextBox.TextChanged += new System.EventHandler(this.ironTextBox_TextChanged);
             // 
             // resource2TextBox
             // 
@@ -676,12 +693,228 @@
             // 
             // tokenUpgradesMenu
             // 
-            this.tokenUpgradesMenu.Enabled = false;
-            this.tokenUpgradesMenu.Location = new System.Drawing.Point(312, 436);
+            this.tokenUpgradesMenu.AutoScroll = true;
+            this.tokenUpgradesMenu.Controls.Add(this.drillResource4Decrease);
+            this.tokenUpgradesMenu.Controls.Add(this.drillResource3Decrease);
+            this.tokenUpgradesMenu.Controls.Add(this.minerResource4Decrease);
+            this.tokenUpgradesMenu.Controls.Add(this.minerResource3Decrease);
+            this.tokenUpgradesMenu.Controls.Add(this.escResource4Decrease);
+            this.tokenUpgradesMenu.Controls.Add(this.escResource3Decrease);
+            this.tokenUpgradesMenu.Controls.Add(this.rocketResource3Decrese);
+            this.tokenUpgradesMenu.Controls.Add(this.rocketResource4Decrese);
+            this.tokenUpgradesMenu.Controls.Add(this.escResource2Decrease);
+            this.tokenUpgradesMenu.Controls.Add(this.drillResource2Decrease);
+            this.tokenUpgradesMenu.Controls.Add(this.drillResource1Decrease);
+            this.tokenUpgradesMenu.Controls.Add(this.minerResource2Decrease);
+            this.tokenUpgradesMenu.Controls.Add(this.rocketResource2Decrese);
+            this.tokenUpgradesMenu.Controls.Add(this.escResource1Decrease);
+            this.tokenUpgradesMenu.Controls.Add(this.minerResource1Decrease);
+            this.tokenUpgradesMenu.Controls.Add(this.rocketResource1Decrese);
+            this.tokenUpgradesMenu.Controls.Add(this.clickUpgradeCostDecrease);
+            this.tokenUpgradesMenu.Location = new System.Drawing.Point(312, 520);
             this.tokenUpgradesMenu.Name = "tokenUpgradesMenu";
             this.tokenUpgradesMenu.Size = new System.Drawing.Size(538, 230);
             this.tokenUpgradesMenu.TabIndex = 44;
             this.tokenUpgradesMenu.Visible = false;
+            // 
+            // drillResource4Decrease
+            // 
+            this.drillResource4Decrease.Enabled = false;
+            this.drillResource4Decrease.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.drillResource4Decrease.Location = new System.Drawing.Point(456, 180);
+            this.drillResource4Decrease.Name = "drillResource4Decrease";
+            this.drillResource4Decrease.Size = new System.Drawing.Size(65, 24);
+            this.drillResource4Decrease.TabIndex = 16;
+            this.drillResource4Decrease.Text = "button17";
+            this.drillResource4Decrease.UseVisualStyleBackColor = true;
+            this.drillResource4Decrease.Visible = false;
+            // 
+            // drillResource3Decrease
+            // 
+            this.drillResource3Decrease.Enabled = false;
+            this.drillResource3Decrease.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.drillResource3Decrease.Location = new System.Drawing.Point(408, 133);
+            this.drillResource3Decrease.Name = "drillResource3Decrease";
+            this.drillResource3Decrease.Size = new System.Drawing.Size(65, 24);
+            this.drillResource3Decrease.TabIndex = 15;
+            this.drillResource3Decrease.Text = "button16";
+            this.drillResource3Decrease.UseVisualStyleBackColor = true;
+            this.drillResource3Decrease.Visible = false;
+            // 
+            // minerResource4Decrease
+            // 
+            this.minerResource4Decrease.Enabled = false;
+            this.minerResource4Decrease.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.minerResource4Decrease.Location = new System.Drawing.Point(456, 13);
+            this.minerResource4Decrease.Name = "minerResource4Decrease";
+            this.minerResource4Decrease.Size = new System.Drawing.Size(65, 24);
+            this.minerResource4Decrease.TabIndex = 14;
+            this.minerResource4Decrease.Text = "button15";
+            this.minerResource4Decrease.UseVisualStyleBackColor = true;
+            this.minerResource4Decrease.Visible = false;
+            // 
+            // minerResource3Decrease
+            // 
+            this.minerResource3Decrease.Enabled = false;
+            this.minerResource3Decrease.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.minerResource3Decrease.Location = new System.Drawing.Point(408, 59);
+            this.minerResource3Decrease.Name = "minerResource3Decrease";
+            this.minerResource3Decrease.Size = new System.Drawing.Size(65, 24);
+            this.minerResource3Decrease.TabIndex = 13;
+            this.minerResource3Decrease.Text = "button14";
+            this.minerResource3Decrease.UseVisualStyleBackColor = true;
+            this.minerResource3Decrease.Visible = false;
+            // 
+            // escResource4Decrease
+            // 
+            this.escResource4Decrease.Enabled = false;
+            this.escResource4Decrease.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.escResource4Decrease.Location = new System.Drawing.Point(4, 183);
+            this.escResource4Decrease.Name = "escResource4Decrease";
+            this.escResource4Decrease.Size = new System.Drawing.Size(65, 24);
+            this.escResource4Decrease.TabIndex = 12;
+            this.escResource4Decrease.Text = "button13";
+            this.escResource4Decrease.UseVisualStyleBackColor = true;
+            this.escResource4Decrease.Visible = false;
+            // 
+            // escResource3Decrease
+            // 
+            this.escResource3Decrease.Enabled = false;
+            this.escResource3Decrease.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.escResource3Decrease.Location = new System.Drawing.Point(51, 133);
+            this.escResource3Decrease.Name = "escResource3Decrease";
+            this.escResource3Decrease.Size = new System.Drawing.Size(65, 24);
+            this.escResource3Decrease.TabIndex = 11;
+            this.escResource3Decrease.Text = "button12";
+            this.escResource3Decrease.UseVisualStyleBackColor = true;
+            this.escResource3Decrease.Visible = false;
+            // 
+            // rocketResource3Decrese
+            // 
+            this.rocketResource3Decrese.Enabled = false;
+            this.rocketResource3Decrese.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rocketResource3Decrese.Location = new System.Drawing.Point(51, 59);
+            this.rocketResource3Decrese.Name = "rocketResource3Decrese";
+            this.rocketResource3Decrese.Size = new System.Drawing.Size(65, 24);
+            this.rocketResource3Decrese.TabIndex = 10;
+            this.rocketResource3Decrese.Text = "button11";
+            this.rocketResource3Decrese.UseVisualStyleBackColor = true;
+            this.rocketResource3Decrese.Visible = false;
+            // 
+            // rocketResource4Decrese
+            // 
+            this.rocketResource4Decrese.Enabled = false;
+            this.rocketResource4Decrese.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rocketResource4Decrese.Location = new System.Drawing.Point(4, 13);
+            this.rocketResource4Decrese.Name = "rocketResource4Decrese";
+            this.rocketResource4Decrese.Size = new System.Drawing.Size(65, 24);
+            this.rocketResource4Decrese.TabIndex = 9;
+            this.rocketResource4Decrese.Text = "button10";
+            this.rocketResource4Decrese.UseVisualStyleBackColor = true;
+            this.rocketResource4Decrese.Visible = false;
+            // 
+            // escResource2Decrease
+            // 
+            this.escResource2Decrease.Enabled = false;
+            this.escResource2Decrease.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.escResource2Decrease.Location = new System.Drawing.Point(99, 180);
+            this.escResource2Decrease.Name = "escResource2Decrease";
+            this.escResource2Decrease.Size = new System.Drawing.Size(65, 24);
+            this.escResource2Decrease.TabIndex = 8;
+            this.escResource2Decrease.Text = "button9";
+            this.escResource2Decrease.UseVisualStyleBackColor = true;
+            this.escResource2Decrease.Visible = false;
+            // 
+            // drillResource2Decrease
+            // 
+            this.drillResource2Decrease.Enabled = false;
+            this.drillResource2Decrease.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.drillResource2Decrease.Location = new System.Drawing.Point(359, 180);
+            this.drillResource2Decrease.Name = "drillResource2Decrease";
+            this.drillResource2Decrease.Size = new System.Drawing.Size(65, 24);
+            this.drillResource2Decrease.TabIndex = 7;
+            this.drillResource2Decrease.Text = "button8";
+            this.drillResource2Decrease.UseVisualStyleBackColor = true;
+            this.drillResource2Decrease.Visible = false;
+            // 
+            // drillResource1Decrease
+            // 
+            this.drillResource1Decrease.Enabled = false;
+            this.drillResource1Decrease.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.drillResource1Decrease.Location = new System.Drawing.Point(295, 133);
+            this.drillResource1Decrease.Name = "drillResource1Decrease";
+            this.drillResource1Decrease.Size = new System.Drawing.Size(65, 24);
+            this.drillResource1Decrease.TabIndex = 6;
+            this.drillResource1Decrease.Text = "button7";
+            this.drillResource1Decrease.UseVisualStyleBackColor = true;
+            // 
+            // minerResource2Decrease
+            // 
+            this.minerResource2Decrease.Enabled = false;
+            this.minerResource2Decrease.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.minerResource2Decrease.Location = new System.Drawing.Point(359, 13);
+            this.minerResource2Decrease.Name = "minerResource2Decrease";
+            this.minerResource2Decrease.Size = new System.Drawing.Size(65, 24);
+            this.minerResource2Decrease.TabIndex = 5;
+            this.minerResource2Decrease.Text = "button6";
+            this.minerResource2Decrease.UseVisualStyleBackColor = true;
+            this.minerResource2Decrease.Visible = false;
+            // 
+            // rocketResource2Decrese
+            // 
+            this.rocketResource2Decrese.Enabled = false;
+            this.rocketResource2Decrese.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rocketResource2Decrese.Location = new System.Drawing.Point(99, 13);
+            this.rocketResource2Decrese.Name = "rocketResource2Decrese";
+            this.rocketResource2Decrese.Size = new System.Drawing.Size(65, 24);
+            this.rocketResource2Decrese.TabIndex = 4;
+            this.rocketResource2Decrese.Text = "button5";
+            this.rocketResource2Decrese.UseVisualStyleBackColor = true;
+            this.rocketResource2Decrese.Visible = false;
+            // 
+            // escResource1Decrease
+            // 
+            this.escResource1Decrease.Enabled = false;
+            this.escResource1Decrease.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.escResource1Decrease.Location = new System.Drawing.Point(162, 133);
+            this.escResource1Decrease.Name = "escResource1Decrease";
+            this.escResource1Decrease.Size = new System.Drawing.Size(65, 24);
+            this.escResource1Decrease.TabIndex = 3;
+            this.escResource1Decrease.Text = "button4";
+            this.escResource1Decrease.UseVisualStyleBackColor = true;
+            // 
+            // minerResource1Decrease
+            // 
+            this.minerResource1Decrease.Enabled = false;
+            this.minerResource1Decrease.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.minerResource1Decrease.Location = new System.Drawing.Point(295, 59);
+            this.minerResource1Decrease.Name = "minerResource1Decrease";
+            this.minerResource1Decrease.Size = new System.Drawing.Size(65, 24);
+            this.minerResource1Decrease.TabIndex = 2;
+            this.minerResource1Decrease.Text = "button3";
+            this.minerResource1Decrease.UseVisualStyleBackColor = true;
+            // 
+            // rocketResource1Decrese
+            // 
+            this.rocketResource1Decrese.Enabled = false;
+            this.rocketResource1Decrese.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rocketResource1Decrese.Location = new System.Drawing.Point(162, 59);
+            this.rocketResource1Decrese.Name = "rocketResource1Decrese";
+            this.rocketResource1Decrese.Size = new System.Drawing.Size(65, 24);
+            this.rocketResource1Decrese.TabIndex = 1;
+            this.rocketResource1Decrese.Text = "button2";
+            this.rocketResource1Decrese.UseVisualStyleBackColor = true;
+            // 
+            // clickUpgradeCostDecrease
+            // 
+            this.clickUpgradeCostDecrease.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.clickUpgradeCostDecrease.Location = new System.Drawing.Point(227, 94);
+            this.clickUpgradeCostDecrease.Name = "clickUpgradeCostDecrease";
+            this.clickUpgradeCostDecrease.Size = new System.Drawing.Size(65, 24);
+            this.clickUpgradeCostDecrease.TabIndex = 0;
+            this.clickUpgradeCostDecrease.Text = "click cost -";
+            this.clickUpgradeCostDecrease.UseVisualStyleBackColor = true;
+            this.clickUpgradeCostDecrease.Click += new System.EventHandler(this.clickUpgradeCostDecrease_Click);
             // 
             // gameForm
             // 
@@ -734,6 +967,7 @@
             this.minerUpgrades.ResumeLayout(false);
             this.drillUpgrades.ResumeLayout(false);
             this.excavatorUpgrades.ResumeLayout(false);
+            this.tokenUpgradesMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -792,7 +1026,24 @@
         private System.Windows.Forms.Button launchButton;
         private System.Windows.Forms.Button loadGameButton;
         private System.Windows.Forms.Button tokenUpgrades;
-        private System.Windows.Forms.FlowLayoutPanel tokenUpgradesMenu;
+        private System.Windows.Forms.Panel tokenUpgradesMenu;
+        private System.Windows.Forms.Button clickUpgradeCostDecrease;
+        private System.Windows.Forms.Button escResource2Decrease;
+        private System.Windows.Forms.Button drillResource2Decrease;
+        private System.Windows.Forms.Button drillResource1Decrease;
+        private System.Windows.Forms.Button minerResource2Decrease;
+        private System.Windows.Forms.Button rocketResource2Decrese;
+        private System.Windows.Forms.Button escResource1Decrease;
+        private System.Windows.Forms.Button minerResource1Decrease;
+        private System.Windows.Forms.Button rocketResource1Decrese;
+        private System.Windows.Forms.Button drillResource4Decrease;
+        private System.Windows.Forms.Button drillResource3Decrease;
+        private System.Windows.Forms.Button minerResource4Decrease;
+        private System.Windows.Forms.Button minerResource3Decrease;
+        private System.Windows.Forms.Button escResource4Decrease;
+        private System.Windows.Forms.Button escResource3Decrease;
+        private System.Windows.Forms.Button rocketResource3Decrese;
+        private System.Windows.Forms.Button rocketResource4Decrese;
     }
 }
 
