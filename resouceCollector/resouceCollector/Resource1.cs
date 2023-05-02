@@ -1,26 +1,26 @@
-﻿namespace resourceCollectorApp
+﻿namespace resourceCollector
 {
     internal class Resource1
     {
-        public double PerClick { get; set; }
-        public double PerSecond { get; set; }
-        public double Count { get; set; }
-        public double PerClickUpgradeCost { get; set; }
-        public double PerSecondUpgrade1Cost { get; set; }
-        public double PerSecondUpgrade2Cost { get; set; }
-        public double PerSecondUpgrade3Cost { get; set; }
-        public int PerSecondUpgrade1Count { get; set; }
-        public int PerSecondUpgrade2Count { get; set; }
-        public int PerSecondUpgrade3Count { get; set; }
-        public int PerClickUpgradeCount { get; set; }
+        public double _perClick { get; set; }
+        public double _perSecond { get; set; }
+        public double _count { get; set; }
+        public double _perClickUpgradeCost { get; set; }
+        public double _perSecondUpgrade1Cost { get; set; }
+        public double _perSecondUpgrade2Cost { get; set; }
+        public double _perSecondUpgrade3Cost { get; set; }
+        public int _perSecondUpgrade1Count { get; set; }
+        public int _perSecondUpgrade2Count { get; set; }
+        public int _perSecondUpgrade3Count { get; set; }
+        public int _perClickUpgradeCount { get; set; }
         public double resource1ToRocket { get; set; }
         public double resource1Needed { get; set; }
-        public double perSecond1 { get; set; }
-        public double perSecond2 { get; set; }
-        public double perSecond3 { get; set; }
-        public double perSecond1UpgradeCost { get; set; }
-        public double perSecond2UpgradeCost { get; set; }
-        public double perSecond3UpgradeCost { get; set; }
+        public double increaseResourceperSecond1 { get; set; }
+        public double increaseResourcePerSecond2 { get; set; }
+        public double increaseResourcePerSecond3 { get; set; }
+        public double increasePerSecond1UpgradeCost { get; set; }
+        public double increasePerSecond2UpgradeCost { get; set; }
+        public double increasePerSecond3UpgradeCost { get; set; }
         public double increasePerSecond1UpgradeCount { get; set; }
         public double increasePerSecond2UpgradeCount { get; set; }
         public double increasePerSecond3UpgradeCount { get; set; }
@@ -29,25 +29,25 @@
         public Resource1(double perClick, double perSecond, double count, double perClickUpgradeCost,
             double perSecondUpgrade1Cost, double perSecondUpgrade2Cost, double perSecondUpgrade3Cost)
         {
-            PerClick = perClick;
-            PerSecond = perSecond;
-            Count = count;
-            PerClickUpgradeCost = perClickUpgradeCost;
-            PerSecondUpgrade1Cost = perSecondUpgrade1Cost;
-            PerSecondUpgrade2Cost = perSecondUpgrade2Cost;
-            PerSecondUpgrade3Cost = perSecondUpgrade3Cost;
-            PerSecondUpgrade1Count = 0;
-            PerSecondUpgrade2Count = 0;
-            PerSecondUpgrade3Count = 0;
-            PerClickUpgradeCount = 0;
+            _perClick = perClick;
+            _perSecond = perSecond;
+            _count = count;
+            _perClickUpgradeCost = perClickUpgradeCost;
+            _perSecondUpgrade1Cost = perSecondUpgrade1Cost;
+            _perSecondUpgrade2Cost = perSecondUpgrade2Cost;
+            _perSecondUpgrade3Cost = perSecondUpgrade3Cost;
+            _perSecondUpgrade1Count = 0;
+            _perSecondUpgrade2Count = 0;
+            _perSecondUpgrade3Count = 0;
+            _perClickUpgradeCount = 0;
             resource1ToRocket = 0;
             resource1Needed = 1000000000;
-            perSecond1 = 15;
-            perSecond2 = 30;
-            perSecond3 = 45;
-            perSecond1UpgradeCost = 200;
-            perSecond2UpgradeCost = 400;
-            perSecond3UpgradeCost = 650;
+            increaseResourceperSecond1 = 15;
+            increaseResourcePerSecond2 = 30;
+            increaseResourcePerSecond3 = 45;
+            increasePerSecond1UpgradeCost = 200;
+            increasePerSecond2UpgradeCost = 400;
+            increasePerSecond3UpgradeCost = 650;
             increasePerSecond1UpgradeCount = 0;
             increasePerSecond2UpgradeCount = 0;
             increasePerSecond3UpgradeCount = 0;
@@ -55,45 +55,45 @@
 
         public void IncreasePerClick()
         {
-            if (Count >= PerClickUpgradeCost)
+            if (_count >= _perClickUpgradeCost)
             {
-                Count -= PerClickUpgradeCost;
-                PerClick *= 2;
-                PerClickUpgradeCost *= 2;
-                PerClickUpgradeCount++;
+                _count -= _perClickUpgradeCost;
+                _perClick *= 2;
+                _perClickUpgradeCost *= 2;
+                _perClickUpgradeCount++;
             }
         }
 
         public void IncreasePerSecond1()
         {
-            if (Count >= PerSecondUpgrade1Cost)
+            if (_count >= _perSecondUpgrade1Cost)
             {
-                Count -= PerSecondUpgrade1Cost;
-                PerSecond += perSecond1;
-                PerSecondUpgrade1Cost *= 1.25;
-                PerSecondUpgrade1Count++;
+                _count -= _perSecondUpgrade1Cost;
+                _perSecond += increaseResourceperSecond1;
+                _perSecondUpgrade1Cost *= 1.25;
+                _perSecondUpgrade1Count++;
             }
         }
 
         public void IncreasePerSecond2()
         {
-            if (Count >= PerSecondUpgrade2Cost)
+            if (_count >= _perSecondUpgrade2Cost)
             {
-                Count -= PerSecondUpgrade2Cost;
-                PerSecond += perSecond2;
-                PerSecondUpgrade2Cost *= 1.50;
-                PerSecondUpgrade2Count++;
+                _count -= _perSecondUpgrade2Cost;
+                _perSecond += increaseResourcePerSecond2;
+                _perSecondUpgrade2Cost *= 1.50;
+                _perSecondUpgrade2Count++;
             }
         }
 
         public void IncreasePerSecond3()
         {
-            if (Count >= PerSecondUpgrade3Cost)
+            if (_count >= _perSecondUpgrade3Cost)
             {
-                Count -= PerSecondUpgrade3Cost;
-                PerSecond += perSecond3;
-                PerSecondUpgrade3Cost *= 1.75;
-                PerSecondUpgrade3Count++;
+                _count -= _perSecondUpgrade3Cost;
+                _perSecond += increaseResourcePerSecond3;
+                _perSecondUpgrade3Cost *= 1.75;
+                _perSecondUpgrade3Count++;
             }
         }
         public void ContributeToRocket()
@@ -103,56 +103,56 @@
                 return;
             }
 
-            if (Count >= resource1Needed - resource1ToRocket)
+            if (_count >= resource1Needed - resource1ToRocket)
             {
                 resource1ToRocket = resource1Needed;
-                Count -= resource1Needed - resource1ToRocket;
+                _count -= resource1Needed - resource1ToRocket;
             }
             else
             {
-                resource1ToRocket += Count;
-                Count = 0;
+                resource1ToRocket += _count;
+                _count = 0;
             }
         }
         public void IncreasePerSecond1Upgrade()
         {
-            if (Count >= perSecond1UpgradeCost)
+            if (_count >= increasePerSecond1UpgradeCost)
             {
-                for (int i = 0; i < PerSecondUpgrade1Count; i++)
+                for (int i = 0; i < _perSecondUpgrade1Count; i++)
                 {
-                    PerSecond += perSecond1;
+                    _perSecond += increaseResourceperSecond1;
                 }
-                perSecond1 *= 2;
-                Count -= perSecond1UpgradeCost;
-                perSecond1UpgradeCost *= 2;
+                increaseResourceperSecond1 *= 2;
+                _count -= increasePerSecond1UpgradeCost;
+                increasePerSecond1UpgradeCost *= 2;
                 increasePerSecond1UpgradeCount++;
             }
         }
         public void IncreasePerSecond2Upgrade()
         {
-            if (Count >= perSecond2UpgradeCost)
+            if (_count >= increasePerSecond2UpgradeCost)
             {
-                for (int i = 0; i < PerSecondUpgrade2Count; i++)
+                for (int i = 0; i < _perSecondUpgrade2Count; i++)
                 {
-                    PerSecond += perSecond2;
+                    _perSecond += increaseResourcePerSecond2;
                 }
-                perSecond2 *= 2;
-                Count -= perSecond2UpgradeCost;
-                perSecond2UpgradeCost *= 2;
+                increaseResourcePerSecond2 *= 2;
+                _count -= increasePerSecond2UpgradeCost;
+                increasePerSecond2UpgradeCost *= 2;
                 increasePerSecond2UpgradeCount++;
             }
         }
         public void IncreasePerSecond3Upgrade()
         {
-            if (Count >= perSecond3UpgradeCost)
+            if (_count >= increasePerSecond3UpgradeCost)
             {
-                for (int i = 0; i < PerSecondUpgrade3Count; i++)
+                for (int i = 0; i < _perSecondUpgrade3Count; i++)
                 {
-                    PerSecond += perSecond3;
+                    _perSecond += increaseResourcePerSecond3;
                 }
-                perSecond3 *= 2;
-                Count -= perSecond3UpgradeCost;
-                perSecond3UpgradeCost *= 2;
+                increaseResourcePerSecond3 *= 2;
+                _count -= increasePerSecond3UpgradeCost;
+                increasePerSecond3UpgradeCost *= 2;
                 increasePerSecond3UpgradeCount++;
             }
         }

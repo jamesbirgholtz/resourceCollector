@@ -1,4 +1,4 @@
-﻿using resourceCollectorApp;
+﻿using resourceCollector;
 using System;
 using System.Windows.Forms;
 
@@ -75,21 +75,21 @@ namespace resouceCollector
         }
         //method to call when the launch button is clicked, resetting the values to the default
         private void NewWorld() {
-                resource1.PerSecond = 0;
-                resource1.Count = 0;
-                resource1.PerClick = 1000000000;
-                resource1.PerSecondUpgrade1Count = 0;
-                resource1.PerSecondUpgrade2Count = 0;
-                resource1.PerSecondUpgrade3Count = 0;
-                resource1.PerClickUpgradeCount = 0;
+                resource1._perSecond = 0;
+                resource1._count = 0;
+                resource1._perClick = 1000000000;
+                resource1._perSecondUpgrade1Count = 0;
+                resource1._perSecondUpgrade2Count = 0;
+                resource1._perSecondUpgrade3Count = 0;
+                resource1._perClickUpgradeCount = 0;
                 resource1.resource1ToRocket = 0;
                 resource1.resource1Needed = 1000000000;
-                resource1.perSecond1 = 15;
-                resource1.perSecond2 = 30;
-                resource1.perSecond3 = 45;
-                resource1.perSecond1UpgradeCost = 200;
-                resource1.perSecond2UpgradeCost = 400;
-                resource1.perSecond3UpgradeCost = 650;
+                resource1.increaseResourceperSecond1 = 15;
+                resource1.increaseResourcePerSecond2 = 30;
+                resource1.increaseResourcePerSecond3 = 45;
+                resource1.increasePerSecond1UpgradeCost = 200;
+                resource1.increasePerSecond2UpgradeCost = 400;
+                resource1.increasePerSecond3UpgradeCost = 650;
                 resource1.increasePerSecond1UpgradeCount = 0;
                 resource1.increasePerSecond2UpgradeCount = 0;
                 resource1.increasePerSecond3UpgradeCount = 0;
@@ -163,7 +163,7 @@ namespace resouceCollector
         //timer that keeps track of the resources per second
         private void perSecondResource_Tick(object sender, EventArgs e)
         {
-            resource1.Count += resource1.PerSecond;
+            resource1._count += resource1._perSecond;
             resource2.Count += resource2.PerSecond;
             resource3.Count += resource3.PerSecond;
             resource4.Count += resource4.PerSecond;
@@ -225,11 +225,11 @@ namespace resouceCollector
             //first world content
             if (worldCounter == 0)
             {
-                resource1TextBox.Text = "Iron: " + resource1.Count.ToString("F0") + Environment.NewLine + "Iron Per Second: " + resource1.PerSecond.ToString("F0");
-                resource1PerClickUpgrade.Text = "Iron Per Click x2 \nCost: " + resource1.PerClickUpgradeCost.ToString("F0");
-                resource1PerSecondUpgrade1.Text = "Iron Miner\n Increases iron by " + resource1.perSecond1 + " per second\n\n Cost: " + resource1.PerSecondUpgrade1Cost.ToString("F0") + " iron";
-                resource1PerSecondUpgrade2.Text = "Iron Drill\n Increases iron by " + resource1.perSecond2 + " per second\n\n Cost: " + resource1.PerSecondUpgrade2Cost.ToString("F0") + " iron";
-                resource1PerSecondUpgrade3.Text = "Iron Escavator\n Increases iron by " + resource1.perSecond3 + " per second\n\n Cost: " + resource1.PerSecondUpgrade3Cost.ToString("F0") + " iron";
+                resource1TextBox.Text = "Iron: " + resource1._count.ToString("F0") + Environment.NewLine + "Iron Per Second: " + resource1._perSecond.ToString("F0");
+                resource1PerClickUpgrade.Text = "Iron Per Click x2 \nCost: " + resource1._perClickUpgradeCost.ToString("F0");
+                resource1PerSecondUpgrade1.Text = "Iron Miner\n Increases iron by " + resource1.increaseResourceperSecond1 + " per second\n\n Cost: " + resource1._perSecondUpgrade1Cost.ToString("F0") + " iron";
+                resource1PerSecondUpgrade2.Text = "Iron Drill\n Increases iron by " + resource1.increaseResourcePerSecond2 + " per second\n\n Cost: " + resource1._perSecondUpgrade2Cost.ToString("F0") + " iron";
+                resource1PerSecondUpgrade3.Text = "Iron Escavator\n Increases iron by " + resource1.increaseResourcePerSecond3 + " per second\n\n Cost: " + resource1._perSecondUpgrade3Cost.ToString("F0") + " iron";
 
 
                 resource2TextBox.Text = "Gold: " + resource2.Count.ToString("F0") + Environment.NewLine + "Gold Per Second: " + resource2.PerSecond.ToString("F0");
@@ -255,17 +255,17 @@ namespace resouceCollector
                 resource3ToRocket.Text = "send titanium to rocket\n" + resource3.resource3ToRocket.ToString("F0") + " total sent\n" + (resource3.resource3Needed - resource3.resource3ToRocket).ToString("F0") + " needed!";
                 resource4ToRocket.Text = "send diamond to rocket\n" + resource4.resource4ToRocket.ToString("F0") + " total sent\n" + (resource4.resource4Needed - resource4.resource4ToRocket).ToString("F0") + " needed!";
 
-                resource1MinerUpgrade.Text = "iron miner + " + resource1.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource1.perSecond1UpgradeCost.ToString("F0") + " iron";
+                resource1MinerUpgrade.Text = "iron miner + " + resource1.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource1.increasePerSecond1UpgradeCost.ToString("F0") + " iron";
                 resource2MinerUpgrade.Text = "gold miner + " + resource2.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource2.perSecond1UpgradeCost.ToString("F0") + " gold";
                 resource3MinerUpgrade.Text = "titanium miner + " + resource3.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource3.perSecond1UpgradeCost.ToString("F0") + " titanium";
                 resource4MinerUpgrade.Text = "diamond miner + " + resource4.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource4.perSecond1UpgradeCost.ToString("F0") + " diamond";
 
-                resource1DrillUpgrade.Text = "iron drill + " + resource1.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource1.perSecond2UpgradeCost.ToString("F0") + " iron";
+                resource1DrillUpgrade.Text = "iron drill + " + resource1.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource1.increasePerSecond2UpgradeCost.ToString("F0") + " iron";
                 resource2DrillUpgrade.Text = "gold drill + " + resource2.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource2.perSecond2UpgradeCost.ToString("F0") + " gold";
                 resource4DrillUpgrade.Text = "diamond drill + " + resource4.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource4.perSecond2UpgradeCost.ToString("F0") + " diamond";
                 resource3DrillUpgrade.Text = "titanium drill + " + resource3.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource3.perSecond2UpgradeCost.ToString("F0") + " titanium";
 
-                resource1EscUpgrade.Text = "iron esc + " + resource1.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource1.perSecond3UpgradeCost.ToString("F0") + " iron";
+                resource1EscUpgrade.Text = "iron esc + " + resource1.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource1.increasePerSecond3UpgradeCost.ToString("F0") + " iron";
                 resource2EscUpgrade.Text = "gold esc + " + resource2.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource2.perSecond3UpgradeCost.ToString("F0") + " gold";
                 resource3EscUpgrade.Text = "titanium esc + " + resource3.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource3.perSecond3UpgradeCost.ToString("F0") + " titanium";
                 resource4EscUpgrade.Text = "diamond esc + " + resource4.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource4.perSecond3UpgradeCost.ToString("F0") + " diamond";
@@ -276,11 +276,11 @@ namespace resouceCollector
             // second world content
             if(worldCounter == 1)
             {
-                resource1TextBox.Text = "Uranium: " + resource1.Count.ToString("F0") + Environment.NewLine + "Uranium Per Second: " + resource1.PerSecond.ToString("F0");
-                resource1PerClickUpgrade.Text = "Uranium Per Click x2 \nCost: " + resource1.PerClickUpgradeCost.ToString("F0");
-                resource1PerSecondUpgrade1.Text = "Uranium Miner\n Increases Uranium by " + resource1.perSecond1 + " per second\n\n Cost: " + resource1.PerSecondUpgrade1Cost.ToString("F0") + " Uranium";
-                resource1PerSecondUpgrade2.Text = "Uranium Drill\n Increases Uranium by " + resource1.perSecond2 + " per second\n\n Cost: " + resource1.PerSecondUpgrade2Cost.ToString("F0") + " Uranium";
-                resource1PerSecondUpgrade3.Text = "Uranium Escavator\n Increases Uranium by " + resource1.perSecond3 + " per second\n\n Cost: " + resource1.PerSecondUpgrade3Cost.ToString("F0") + " Uranium";
+                resource1TextBox.Text = "Uranium: " + resource1._count.ToString("F0") + Environment.NewLine + "Uranium Per Second: " + resource1._perSecond.ToString("F0");
+                resource1PerClickUpgrade.Text = "Uranium Per Click x2 \nCost: " + resource1._perClickUpgradeCost.ToString("F0");
+                resource1PerSecondUpgrade1.Text = "Uranium Miner\n Increases Uranium by " + resource1.increaseResourceperSecond1 + " per second\n\n Cost: " + resource1._perSecondUpgrade1Cost.ToString("F0") + " Uranium";
+                resource1PerSecondUpgrade2.Text = "Uranium Drill\n Increases Uranium by " + resource1.increaseResourcePerSecond2 + " per second\n\n Cost: " + resource1._perSecondUpgrade2Cost.ToString("F0") + " Uranium";
+                resource1PerSecondUpgrade3.Text = "Uranium Escavator\n Increases Uranium by " + resource1.increaseResourcePerSecond3 + " per second\n\n Cost: " + resource1._perSecondUpgrade3Cost.ToString("F0") + " Uranium";
 
 
                 resource2TextBox.Text = "Plutonium: " + resource2.Count.ToString("F0") + Environment.NewLine + "Plutonium Per Second: " + resource2.PerSecond.ToString("F0");
@@ -306,17 +306,17 @@ namespace resouceCollector
                 resource3ToRocket.Text = "send Tin to rocket\n" + resource3.resource3ToRocket.ToString("F0") + " total sent\n" + (resource3.resource3Needed - resource3.resource3ToRocket).ToString("F0") + " needed!";
                 resource4ToRocket.Text = "send Silicon to rocket\n" + resource4.resource4ToRocket.ToString("F0") + " total sent\n" + (resource4.resource4Needed - resource4.resource4ToRocket).ToString("F0") + " needed!";
 
-                resource1MinerUpgrade.Text = "Uranium miner + " + resource1.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource1.perSecond1UpgradeCost.ToString("F0") + " Uranium";
+                resource1MinerUpgrade.Text = "Uranium miner + " + resource1.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource1.increasePerSecond1UpgradeCost.ToString("F0") + " Uranium";
                 resource2MinerUpgrade.Text = "Plutonium miner + " + resource2.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource2.perSecond1UpgradeCost.ToString("F0") + " Plutonium";
                 resource3MinerUpgrade.Text = "Tin miner + " + resource3.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource3.perSecond1UpgradeCost.ToString("F0") + " Tin";
                 resource4MinerUpgrade.Text = "Silicon miner + " + resource4.increasePerSecond1UpgradeCount.ToString() + "\nCosts: " + resource4.perSecond1UpgradeCost.ToString("F0") + " Silicon";
 
-                resource1DrillUpgrade.Text = "Uranium drill + " + resource1.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource1.perSecond2UpgradeCost.ToString("F0") + " Uranium";
+                resource1DrillUpgrade.Text = "Uranium drill + " + resource1.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource1.increasePerSecond2UpgradeCost.ToString("F0") + " Uranium";
                 resource2DrillUpgrade.Text = "Plutonium drill + " + resource2.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource2.perSecond2UpgradeCost.ToString("F0") + " gold";
                 resource4DrillUpgrade.Text = "Silicon drill + " + resource4.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource4.perSecond2UpgradeCost.ToString("F0") + " Silicon";
                 resource3DrillUpgrade.Text = "Tin drill + " + resource3.increasePerSecond2UpgradeCount.ToString() + "\nCosts: " + resource3.perSecond2UpgradeCost.ToString("F0") + " Tin";
 
-                resource1EscUpgrade.Text = "Uranium esc + " + resource1.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource1.perSecond3UpgradeCost.ToString("F0") + " Uranium";
+                resource1EscUpgrade.Text = "Uranium esc + " + resource1.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource1.increasePerSecond3UpgradeCost.ToString("F0") + " Uranium";
                 resource2EscUpgrade.Text = "Plutonium esc + " + resource2.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource2.perSecond3UpgradeCost.ToString("F0") + " Plutonium";
                 resource3EscUpgrade.Text = "Tin esc + " + resource3.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource3.perSecond3UpgradeCost.ToString("F0") + " Tin";
                 resource4EscUpgrade.Text = "Silicon esc + " + resource4.increasePerSecond3UpgradeCount.ToString() + "\nCosts: " + resource4.perSecond3UpgradeCost.ToString("F0") + " Silicon";
@@ -330,7 +330,7 @@ namespace resouceCollector
         // main button
         private void resourceButton_Click(object sender, EventArgs e)
         {
-            resource1.Count += resource1.PerClick;
+            resource1._count += resource1._perClick;
             resource2.Count += resource2.PerClick;
             resource3.Count += resource3.PerClick;
             resource4.Count += resource4.PerClick;
@@ -502,7 +502,7 @@ namespace resouceCollector
             upgradeTree.ClickCostDecrease();
             if (upgradeTree.ClickUpgradeDecreaseCounter == 0)
             {
-                resource1.PerClickUpgradeCost /= 2;
+                resource1._perClickUpgradeCost /= 2;
             }
             else if (upgradeTree.ClickUpgradeDecreaseCounter == 1) {
                 resource2.PerClickUpgradeCost /= 2;
